@@ -5,11 +5,11 @@
 // You're free to add application-wide JavaScript to this file, but it's generally better
 // to create separate JavaScript files as needed.
 //
+//= require modernizr-2.8.3.min
 //= require jquery-3.1.1.min
 //= require bootstrap
-//= require ajax-mail
-//= require modernizr-2.8.3.min
 //= require plugins
+//= require ajax-mail
 //= require main
 //= require_tree .
 //= require_self

@@ -25,6 +25,5 @@ class Usuario {
 
     static mapping = {
         table 'usuario'
-        id column: 'correo', type: 'string'
     }
 }
