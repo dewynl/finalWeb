@@ -6,6 +6,8 @@ import static org.springframework.http.HttpStatus.*
 class UsuarioController {
 
     UsuarioService usuarioService
+    CarritoService carritoService
+    DepartamentoService departamentoService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -19,7 +21,7 @@ class UsuarioController {
     }
 
     def create() {
-        respond new Usuario(params)
+        return ['departamentos': departamentoService.list(params)]
     }
 
     def save(Usuario usuario) {
@@ -30,6 +32,9 @@ class UsuarioController {
 
         try {
             usuarioService.save(usuario)
+            Carrito car = new Carrito()
+            car.setUsuario(usuario)
+            carritoService.save(car)
         } catch (ValidationException e) {
             respond usuario.errors, view:'create'
             return

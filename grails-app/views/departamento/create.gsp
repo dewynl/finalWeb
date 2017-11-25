@@ -189,7 +189,7 @@
     <div class="page-banner-section section">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-lg-12">
                     <div class="page-banner-content">
                         <h1>Crear departamento</h1>
                         <ul class="breadcrumb">
@@ -226,7 +226,7 @@
                     <div class="contact-form col-md-6 col-xs-12 mb-40">
                         <g:form controller="departamento" action="save"  method="POST">
                             <div class="row">
-                                <div class="col-sm-12 col-xs-12 mb-20"><input type="text" name="name" placeholder="Name"></div>
+                                <div class="col-sm-12 col-xs-12 mb-20"><input type="text" name="nombre" placeholder="Department Name"></div>
                                 <div class="col-xs-12">
                                     <input type="submit" value="SUBMIT">
                                 </div>
