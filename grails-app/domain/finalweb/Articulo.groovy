@@ -26,7 +26,7 @@ class Articulo {
 
 
     @Override
-    public String toString() {
+    String toString() {
         return "Articulo{" +
                 "id=" + id +
                 ", version=" + version +
@@ -37,6 +37,6 @@ class Articulo {
                 ", foto=" + foto.size() +
                 ", dateCreated=" + dateCreated +
                 ", lastUpdated=" + lastUpdated +
-                '}';
+                '}'
     }
 }
