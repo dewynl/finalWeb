@@ -8,6 +8,7 @@ class Usuario {
     String clave
     String telefono
     String direccion
+    Departamento departamento
 
     Date dateCreated
     Date lastUpdated
@@ -18,7 +19,12 @@ class Usuario {
         apellido blank: false, nullable: false
         telefono blank: true, nullable: true
         direccion blank: false, nullable: false
-        clave blank: false, password: true
+        clave blank: false, nullable: false, password: true
+        departamento blank: false, password: false
+    }
 
+    static mapping = {
+        table 'usuario'
+        id column: 'correo', type: 'string'
     }
 }
