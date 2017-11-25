@@ -23,9 +23,8 @@ class ArticuloController {
     }
 
     def save(Articulo articulo) {
-
+        articulo.foto = params.file.getBytes()
         println(articulo)
-        println(params.file.getClass())
 
         if (articulo == null) {
             notFound()

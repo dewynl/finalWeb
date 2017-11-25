@@ -21,6 +21,7 @@ class Articulo {
 
     static mapping = {
         table 'articulo'
+        foto sqlType: 'longblob'
     }
 
 
@@ -33,7 +34,7 @@ class Articulo {
                 ", precio=" + precio +
                 ", peso=" + peso +
                 ", cantidad=" + cantidad +
-                ", foto=" + Arrays.toString(foto) +
+                ", foto=" + foto.size() +
                 ", dateCreated=" + dateCreated +
                 ", lastUpdated=" + lastUpdated +
                 '}';
