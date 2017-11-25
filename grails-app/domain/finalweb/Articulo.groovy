@@ -22,4 +22,20 @@ class Articulo {
     static mapping = {
         table 'articulo'
     }
+
+
+    @Override
+    public String toString() {
+        return "Articulo{" +
+                "id=" + id +
+                ", version=" + version +
+                ", nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                ", peso=" + peso +
+                ", cantidad=" + cantidad +
+                ", foto=" + Arrays.toString(foto) +
+                ", dateCreated=" + dateCreated +
+                ", lastUpdated=" + lastUpdated +
+                '}';
+    }
 }

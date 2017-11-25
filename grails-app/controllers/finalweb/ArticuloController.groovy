@@ -23,6 +23,10 @@ class ArticuloController {
     }
 
     def save(Articulo articulo) {
+
+        println(articulo)
+        println(params.file.getClass())
+
         if (articulo == null) {
             notFound()
             return

@@ -107,7 +107,7 @@
                         <ul>
                             <li><a href="/home">Home</a>
                             </li>
-                            <li><a href="/shop">shop</a>
+                            <li><a href="/shop">Tienda</a>
                             </li>
                         </ul>
                     </nav>

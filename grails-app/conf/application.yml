@@ -28,9 +28,10 @@ endpoints:
     enabled: false
     jmx:
         enabled: true
-
 server:
   port: 7878
+
+
 
 ---
 grails:
@@ -71,6 +72,9 @@ grails:
             maxsize: 1000
     controllers:
         defaultScope: singleton
+        upload:
+            maxFileSize: 26214400
+            maxRequestSize: 26214400
     converters:
         encoding: UTF-8
     views:
