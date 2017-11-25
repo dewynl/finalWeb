@@ -6,7 +6,7 @@ class Articulo {
     float precio
     float peso
     long cantidad
-    byte[] foto
+    String foto
 
     Date dateCreated
     Date lastUpdated
@@ -21,7 +21,7 @@ class Articulo {
 
     static mapping = {
         table 'articulo'
-        foto sqlType: 'longblob'
+        foto sqlType: 'text'
     }
 
 

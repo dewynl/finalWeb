@@ -23,8 +23,8 @@ class ArticuloController {
     }
 
     def save(Articulo articulo) {
-        articulo.foto = params.file.getBytes()
-        println(articulo)
+
+        articulo.foto = params.file.bytes.encodeBase64()
 
         if (articulo == null) {
             notFound()
