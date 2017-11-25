@@ -54,7 +54,6 @@
                     <div class="col-xs-12">
                         <div class="wishlist-table table-responsive mb-40">
 
-
                             <div id="list-departamento" class="content scaffold-list" role="main">
                                 <g:if test="${flash.message}">
                                     <div class="message" role="status">${flash.message}</div>

@@ -11,7 +11,8 @@ class ArticuloController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond articuloService.list(params), model:[articuloCount: articuloService.count()]
+        println("HOlaa"+articuloService.list(params).size())
+        return [articuloCount: articuloService.count(), 'articulos': articuloService.list(params)]
     }
 
     def show(Long id) {
