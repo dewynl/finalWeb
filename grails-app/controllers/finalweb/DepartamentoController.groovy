@@ -11,7 +11,7 @@ class DepartamentoController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond departamentoService.list(params), model:[departamentoCount: departamentoService.count()]
+        return [departamentoCount: departamentoService.count(),'departamentos': departamentoService.list(params)]
     }
 
     def show(Long id) {
