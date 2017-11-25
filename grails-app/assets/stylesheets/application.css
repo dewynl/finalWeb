@@ -10,6 +10,11 @@
 *= require bootstrap
 *= require grails
 *= require main
+*= require font-awesome.min
+*= require pe-icon-7-stroke
+*= require responsive
+*= require plugins
+*= require style
 *= require mobile
 *= require_self
 */
