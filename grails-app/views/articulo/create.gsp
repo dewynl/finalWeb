@@ -54,96 +54,37 @@ generatedcontent video audio localstorage sessionstorage webworkers applicationc
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 col-xs-12">
                     <div class="login-reg-form">
-                        <form action="https://devitems.com/preview/outside/register.html#">
+                        <g:form controller="articulo" action="save" method="POST" enctype="multipart/form-data">
                             <div class="row">
-                                <div class="col-sm-6 col-xs-12 mb-20">
-                                    <label for="r_f_name">First Name <span class="required">*</span></label>
-                                    <input id="r_f_name" type="text">
+                                <div class="form-group">
+                                    <label for="r_f_name">Nombre:<span class="required">*</span></label>
+                                    <input name="nombre" id="r_f_name" type="text" class="form-control">
                                 </div>
 
-                                <div class="col-sm-6 col-xs-12 mb-20">
-                                    <label for="r_l_name">Last Name <span class="required">*</span></label>
-                                    <input id="r_l_name" type="text">
+                                <div class="form-group">
+                                    <label for="r_email">Precio:<span class="required">*</span></label>
+                                    <input name="precio" id="r_email" type="number" min="0" class="form-control">
                                 </div>
 
-                                <div class="col-xs-12 mb-20">
-                                    <label for="r_c_name">Company Name</label>
-                                    <input id="r_c_name" type="text">
+                                <div class="form-group">
+                                    <label for="r_city">Peso: <span class="required">*</span></label>
+                                    <input name="peso" id="r_city" type="number" min="0" class="form-control">
                                 </div>
 
-                                <div class="col-sm-6 col-xs-12 mb-20">
-                                    <label for="r_email">Email Address <span class="required">*</span></label>
-                                    <input id="r_email" type="email">
+                                <div class="form-group">
+                                    <label for="r_phone">Cantidad:  <span class="required">*</span></label>
+                                    <input name="cantidad" id="r_phone" type="number" min="0" class="form-control">
                                 </div>
 
-                                <div class="col-sm-6 col-xs-12 mb-20">
-                                    <label for="r_phone">Phone  <span class="required">*</span></label>
-                                    <input id="r_phone" type="text">
+                                <div class="form-group">
+                                    <label for="r_pic">Foto: <span class="required">*</span></label>
+                                    <input name="file" id="r_pic" type="file" class="">
                                 </div>
-
-                                <div class="col-xs-12 mb-20">
-                                    <label for="r_country">Country <span class="required">*</span></label>
-                                    <select id="r_country">
-                                        <option value="1">Select a country</option>
-                                        <option value="2">bangladesh</option>
-                                        <option value="3">Algeria</option>
-                                        <option value="4">Afghanistan</option>
-                                        <option value="5">Ghana</option>
-                                        <option value="6">Albania</option>
-                                        <option value="7">Bahrain</option>
-                                        <option value="8">Colombia</option>
-                                        <option value="9">Dominican Republic</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-xs-12 mb-20">
-                                    <label>Address <span class="required">*</span></label>
-                                    <input type="text" placeholder="Street address">
-                                </div>
-
-                                <div class="col-xs-12 mb-20">
-                                    <input type="text" placeholder="Apartment, suite, unit etc. (optional)">
-                                </div>
-
-                                <div class="col-xs-12 mb-20">
-                                    <label for="r_city">Town / City <span class="required">*</span></label>
-                                    <input id="r_city" type="text">
-                                </div>
-
-                                <div class="col-sm-6 col-xs-12 mb-20">
-                                    <label>State / County <span class="required">*</span></label>
-                                    <input type="text">
-                                </div>
-
-                                <div class="col-sm-6 col-xs-12 mb-20">
-                                    <label for="r_zip">Postcode / Zip <span class="required">*</span></label>
-                                    <input id="r_zip" type="text">
-                                </div>
-
-                                <div class="col-xs-12 mb-20">
-                                    <label class="" for="r_password">Account password<span class="required">*</span>
-                                    </label>
-                                    <input id="r_password" type="password">
-                                </div>
-
-                                <div class="col-xs-12 mb-20">
-                                    <label class="" for="r_c_password">Confirm password<span class="required">*</span>
-                                    </label>
-                                    <input id="r_c_password" type="password">
-                                </div>
-
-                                <div class="col-xs-12 mb-20">
-                                    <input id="rememberme" type="checkbox">
-                                    <label for="rememberme">I agree <a
-                                            href="https://devitems.com/preview/outside/register.html#">Terms &amp; Condition</a>
-                                    </label>
-                                </div>
-
-                                <div class="col-xs-12">
+                                <div class="">
                                     <input value="register" type="submit">
                                 </div>
                             </div>
-                        </form>
+                        </g:form>
                     </div>
                 </div>
             </div>
@@ -151,7 +92,6 @@ generatedcontent video audio localstorage sessionstorage webworkers applicationc
     </div>
     <!-- PAGE SECTION END -->
     <g:include view="helpers/footer.gsp"/>
-
 </div>
 <!-- Body main wrapper end -->
 

@@ -21,5 +21,22 @@ class Articulo {
 
     static mapping = {
         table 'articulo'
+        foto sqlType: 'longblob'
+    }
+
+
+    @Override
+    public String toString() {
+        return "Articulo{" +
+                "id=" + id +
+                ", version=" + version +
+                ", nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                ", peso=" + peso +
+                ", cantidad=" + cantidad +
+                ", foto=" + foto.size() +
+                ", dateCreated=" + dateCreated +
+                ", lastUpdated=" + lastUpdated +
+                '}';
     }
 }
