@@ -8,9 +8,6 @@ class Orden {
     boolean despachado
     boolean recibido
 
-    Date dateCreated
-    Date lastUpdated
-
     static constraints = {
         usuario nullable: false, blank: false
         total min: 0d, nullable: false, blank: false
