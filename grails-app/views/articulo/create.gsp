@@ -15,8 +15,6 @@ generatedcontent video audio localstorage sessionstorage webworkers applicationc
     <link rel="shortcut icon" type="image/x-icon" href="https://devitems.com/preview/outside/img/favicon.ico">
 
     <asset:stylesheet src="application.css"/>
-
-
     <!-- Modernizr JS -->
     <g:javascript src="modernizr-2.8.3.min.js"/>
 
