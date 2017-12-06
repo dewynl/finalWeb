@@ -8,7 +8,8 @@ class Usuario {
     String clave
     String telefono
     String direccion
-    Departamento departamento
+    TipoUsuario tipo
+
 
     Date dateCreated
     Date lastUpdated
@@ -20,7 +21,7 @@ class Usuario {
         telefono blank: true, nullable: true
         direccion blank: false, nullable: false
         clave blank: false, nullable: false, password: true
-        departamento blank: false, password: false
+        tipo nullable: false
     }
 
     static mapping = {

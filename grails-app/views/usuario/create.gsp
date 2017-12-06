@@ -1,7 +1,40 @@
 <!DOCTYPE html>
-<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><head><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
-</style><link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}
-</style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"
+      lang="en" style=""><head><style type="text/css">.gm-style .gm-style-mtc label, .gm-style .gm-style-mtc div {
+    font-weight: 400
+}
+</style><link type="text/css" rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"><style
+        type="text/css">.gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div {
+    font-size: 10px
+}
+</style><style type="text/css">@media print {
+    .gm-style .gmnoprint, .gmnoprint {
+        display: none
+    }
+}
+
+@media screen {
+    .gm-style .gmnoscreen, .gmnoscreen {
+        display: none
+    }
+}</style><style type="text/css">.gm-style-pbc {
+    transition: opacity ease-in-out;
+    background-color: rgba(0, 0, 0, 0.45);
+    text-align: center
+}
+
+.gm-style-pbt {
+    font-size: 22px;
+    color: white;
+    font-family: Roboto, Arial, sans-serif;
+    position: relative;
+    margin: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
 </style>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -18,15 +51,31 @@
 
     <asset:stylesheet src="application.css"/>
 
-    <g:javascript src="modernizr-2.8.3.min.js" />
+    <g:javascript src="modernizr-2.8.3.min.js"/>
     <!-- Modernizr JS -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
-    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/common.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/map.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/util.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/marker.js"></script><style type="text/css">.gm-style {
+    <script type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/common.js"></script><script type="text/javascript"
+                                                                                                 charset="UTF-8"
+                                                                                                 src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/map.js"></script><script
+            type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/util.js"></script><script type="text/javascript"
+                                                                                               charset="UTF-8"
+                                                                                               src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/marker.js"></script><style
+            type="text/css">.gm-style {
         font: 400 11px Roboto, Arial, sans-serif;
         text-decoration: none;
     }
-    .gm-style img { max-width: none; }</style><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/onion.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/controls.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/stats.js"></script></head>
+
+    .gm-style img {
+        max-width: none;
+    }</style><script type="text/javascript" charset="UTF-8"
+                     src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/onion.js"></script><script
+            type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/controls.js"></script><script
+            type="text/javascript" charset="UTF-8"
+            src="https://maps.googleapis.com/maps-api-v3/api/js/31/0/stats.js"></script></head>
 
 <body>
 
@@ -70,46 +119,55 @@
                     <g:hasErrors bean="${this.usuario}">
                         <ul class="errors" role="alert">
                             <g:eachError bean="${this.departamento}" var="error">
-                                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+                                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+                                        error="${error}"/></li>
                             </g:eachError>
                         </ul>
                     </g:hasErrors>
 
                     <div class="contact-form col-md-6 col-xs-12 mb-40">
-                        <g:form controller="usuario" action="save"  method="POST">
+                        <g:form controller="usuario" action="save" method="POST">
                             <div class="row">
-                                <div class="col-sm-12 col-xs-12 mb-20"><input type="email" name="correo" placeholder="Email"></div>
-                                <div class="col-sm-12 col-xs-12 mb-20"><input type="text" name="nombre" placeholder="Name"></div>
-                                <div class="col-sm-12 col-xs-12 mb-20"><input type="text" name="apellido" placeholder="Last Name"></div>
-                                <div class="col-sm-12 col-xs-12 mb-20"><input type="text" name="clave" placeholder="Password"></div>
-                                <div class="col-sm-12 col-xs-12 mb-20"><input type="number" name="telefono" placeholder="Phone number"></div>
-                                <div class="col-sm-12 col-xs-12 mb-20"><input type="text" name="direccion" placeholder="Address"></div>
+                                <div class="col-sm-12 col-xs-12 mb-20">
+                                    <input type="email" name="correo" placeholder="Email">
+                                </div>
 
                                 <div class="col-sm-12 col-xs-12 mb-20">
-                                    <label>Departament</label>
-                                    <select name="departamento" class="form-control js-example-basic-single">
-                                        <g:each in="${departamentos}" var="c">
-                                            <option value="${c.id}">${c.nombre}</option>
+                                    <input type="text" name="nombre" placeholder="Name">
+                                </div>
+
+                                <div class="col-sm-12 col-xs-12 mb-20">
+                                    <input type="text" name="apellido" placeholder="Last Name">
+                                </div>
+
+                                <div class="col-sm-12 col-xs-12 mb-20">
+                                    <input type="password" name="clave" placeholder="Password">
+                                </div>
+
+                                <div class="col-sm-12 col-xs-12 mb-20">
+                                    <input type="number" name="telefono" placeholder="Phone number">
+                                </div>
+
+                                <div class="col-sm-12 col-xs-12 mb-20">
+                                    <input type="text" name="direccion" placeholder="Address">
+                                </div>
+
+                                <div class="col-sm-12 col-xs-12 mb-20">
+                                    <label>Tipo de Usuario:</label>
+                                    <select name="tipo" class="form-control js-example-basic-single">
+                                        <g:each in="${tipos}" var="t">
+                                            <option value="${t.key}">${t.val}</option>
                                         </g:each>
                                     </select>
                                 </div>
 
-
-
-
-
-
-
-
-
                                 <div class="col-xs-12">
-                                    <input type="submit" value="SUBMIT">
+                                    <input type="submit" value="CREAR">
                                 </div>
                             </div>
                         </g:form>
                     </div>
                 </div>
-
 
             </div>
             <!-- Contact Info -->
@@ -126,6 +184,7 @@
                 <!-- Footer Widget -->
                 <div class="footer-widget col-md-4 col-sm-6 col-xs-12 mb-40">
                     <h5 class="widget-title">ABOUT THE STORE</h5>
+
                     <p>There are many variations of passages of Lor available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
                 </div>
 
@@ -154,15 +213,25 @@
                 <!-- Footer Widget -->
                 <div class="footer-widget col-md-3 col-sm-6 col-xs-12 mb-40">
                     <h5 class="widget-title">SIGN UP FOR OUR AWESOME NEWS</h5>
-                    <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="sunscribe-form validate" target="_blank" novalidate="">
+
+                    <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef"
+                          method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                          class="sunscribe-form validate" target="_blank" novalidate="">
                         <div id="mc_embed_signup_scroll">
                             <label for="mce-EMAIL" class="hidden">Subscribe to our mailing list</label>
-                            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required="">
+                            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL"
+                                   placeholder="Email Address" required="">
                             <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                            <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
+                                                                                                      name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef"
+                                                                                                      tabindex="-1"
+                                                                                                      value=""></div>
+
+                            <div class="clear"><input type="submit" value="Subscribe" name="subscribe"
+                                                      id="mc-embedded-subscribe" class="button"></div>
                         </div>
                     </form>
+
                     <div class="footer-social fix">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
@@ -210,7 +279,9 @@
 <!-- Ajax Mail js -->
 <script src="js/ajax-mail.js"></script>
 <!-- Main js -->
-<script src="js/main.js"></script><a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: none;"><i class="fa fa-angle-up"></i></a>
+<script src="js/main.js"></script><a id="scrollUp" href="#top"
+                                     style="position: fixed; z-index: 2147483647; display: none;"><i
+            class="fa fa-angle-up"></i></a>
 
 <asset:javascript src="application.js"/>
 

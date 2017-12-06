@@ -21,7 +21,7 @@ class UsuarioController {
     }
 
     def create() {
-        return ['departamentos': departamentoService.list(params)]
+        return ['tipos': TipoUsuario.getListaTipos()]
     }
 
     def save(Usuario usuario) {
@@ -39,6 +39,27 @@ class UsuarioController {
             respond usuario.errors, view:'create'
             return
         }
+
+
+        if(usuario.tipo in [TipoUsuario.CLIENTE_CONSUMIDOR_FINAL, TipoUsuario.CLIENTE_EMPRESA,
+                            TipoUsuario.CLIENTE_PERSONA_FISICA]) {
+            String texto = ""
+            texto  = "Gracias por registrarte en Ubei Store!\n\n"
+            texto += "Puedes entrar a la tienda en el enlace http://localhost:7878\n"
+            texto += "\tUsuario: ${usuario.correo}\n"
+            texto += "\tPassword: ${usuario.clave}\n\n"
+            texto += "Un saludo."
+
+            sendMail {
+                multipart false
+                subject "Ubei Store Registration"
+                text texto
+                to usuario.correo
+                from "ubeistore@gmail.com"
+            }
+        }
+
+
 
         request.withFormat {
             form multipartForm {
