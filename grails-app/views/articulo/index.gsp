@@ -15,8 +15,7 @@
 
     <g:javascript src="modernizr-2.8.3.min.js" />
 
-    <!-- Modernizr JS -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
 
 </head>
 
@@ -141,7 +140,7 @@
                                 <a class="image" href="product-details.html"><img src="data:image/png;base64,${a.foto}" alt=""></a>
                                 <!-- Action Button -->
                                 <div class="action-btn-2">
-                                    <a href="#" title="Add to Cart"><i class="pe-7s-cart"></i></a>
+                                    <a href="/articulo/show/${a.id}" title="Add to Cart"><i class="pe-7s-cart"></i></a>
                                     <a href="#" data-toggle="modal" data-target="#quickViewModal" title="Quick View"><i class="pe-7s-look"></i></a>
                                     <a class="wishlist" href="#" title="Wishlist"><i class="pe-7s-like"></i></a>
                                 </div>

@@ -16,7 +16,7 @@ class ArticuloController {
     }
 
     def show(Long id) {
-        respond articuloService.get(id)
+        return ['articulo': articuloService.get(id)]
     }
 
     def create() {
