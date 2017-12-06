@@ -69,7 +69,7 @@
                                         <th class="pro-title">Clave</th>
                                         <th class="pro-title">Telefono</th>
                                         <th class="pro-title">Direccion</th>
-                                        <th class="pro-title">Departamento</th>
+                                        <th class="pro-title">Tipo</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -81,7 +81,7 @@
                                             <td>${c.clave}</td>
                                             <td>${c.telefono}</td>
                                             <td>${c.direccion}</td>
-                                            <td>${c.departamento.nombre}</td>
+                                            <td>${c.tipo}</td>
 
 
                                         </tr>

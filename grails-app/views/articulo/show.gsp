@@ -75,7 +75,7 @@
                         <div class="product-quantity">
                             <form action="/carrito/agregar">
                                 <input type="text" name="cantidad">
-                                <input type="number" name="${articulo.id}">
+                                <input type="hidden" name="id_articulo" value="${articulo.id}">
                                 <span class="dec qtybtn"><i class="fa fa-angle-left"></i></span><span class="inc qtybtn"><i class="fa fa-angle-right"></i></span></div>
                                 <button class="add-to-cart">add to cart</button>
                             </form>

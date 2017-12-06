@@ -22,27 +22,31 @@ class CarritoController {
         respond new Carrito(params)
     }
 
-    def agregar(Integer id_producto, Integer cantidad, Integer id_usuario) {
+    def agregar() {
 
-        Articulo a = Articulo.findById(id_producto)
-        Usuario u = Usuario.findById(id_usuario)
-        Usuario us = Usuario.findByNombre("admin")
+        println(params.cantidad)
+
+        Articulo a = Articulo.findById(Integer.parseInt(params.id_articulo))
+
+        Usuario us = Usuario.findByNombre("Eva")
+
         //Usuario usuario=(Usuario) applicationContext.springSecurityService.getCurrentUser()
 
-        Carrito c = Carrito.findByUsuario(u)
+        Carrito c = Carrito.findByUsuario(us)
 
 
-        if(a.cantidad >= cantidad) {
+        if(a.cantidad >= Integer.parseInt(params.cantidad)) {
             ItemOrden io = new ItemOrden()
             io.setArticulo(a)
-            io.setCantidad(cantidad)
+            io.setCantidad(Integer.parseInt(params.cantidad))
 
             c.itemOrdenes.add(io)
+            println("adentro -> "+ Carrito.findByUsuario(us).itemOrdenes.size())
 
-            flash.message = "Producto ${p.nombre} agregado al carrito!"
+            flash.message = "Producto ${a.nombre} agregado al carrito!"
         }
         else {
-            flash.error = "Producto ${p.nombre} No tiene suficiente existencia!"
+            flash.error = "Producto ${a.nombre} No tiene suficiente existencia!"
         }
         redirect(controller: 'producto', action: 'catalogo')
     }

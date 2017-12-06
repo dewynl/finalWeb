@@ -25,6 +25,7 @@ class UsuarioController {
     }
 
     def save(Usuario usuario) {
+
         if (usuario == null) {
             notFound()
             return
