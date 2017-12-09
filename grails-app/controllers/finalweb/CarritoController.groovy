@@ -9,9 +9,17 @@ class CarritoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond carritoService.list(params), model:[carritoCount: carritoService.count()]
+        Usuario us = Usuario.findByNombre("Eva")
+        Integer total= 0
+        for(ItemOrden a in Carrito.findByUsuario(us).itemOrdenes){
+            total += (a.cantidad * a.articulo.precio)
+        }
+
+       // println("adentro2-->" + Carrito.findByUsuario(us).itemOrdenes.size() )
+        return [carritoCount: carritoService.count(), 'carrito': Carrito.findByUsuario(us).itemOrdenes, "total": total]
     }
 
     def show(Long id) {
@@ -41,6 +49,7 @@ class CarritoController {
             io.setCantidad(Integer.parseInt(params.cantidad))
 
             c.itemOrdenes.add(io)
+            carritoService.save(c)
             println("adentro -> "+ Carrito.findByUsuario(us).itemOrdenes.size())
 
             flash.message = "Producto ${a.nombre} agregado al carrito!"
@@ -125,4 +134,6 @@ class CarritoController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+
 }
