@@ -9,16 +9,8 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-
-    <!-- All CSS Files -->
-    <!-- Bootstrap css -->
     <asset:stylesheet src="application.css"/>
-
     <g:javascript src="modernizr-2.8.3.min.js" />
-
-    <!-- Modernizr JS -->
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-
 </head>
 
 <body>
@@ -106,21 +98,6 @@
 
 </div>
 <!-- Body main wrapper end -->
-
-
-<!-- Placed JS at the end of the document so the pages load faster -->
-
-<!-- jQuery latest version -->
-<script src="js/vendor/jquery-3.1.1.min.js"></script>
-<!-- Bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
-<!-- Plugins js -->
-<script src="js/plugins.js"></script>
-<!-- Ajax Mail js -->
-<script src="js/ajax-mail.js"></script>
-<!-- Main js -->
-<script src="js/main.js"></script><a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647;"><i class="fa fa-angle-up"></i></a>
-
 <asset:javascript src="application.js"/>
 
 

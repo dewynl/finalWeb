@@ -13,6 +13,19 @@ $window.on('scroll', function() {
 		$(".sticker").addClass("stick");
 	}
 });
+
+/*--
+    Cart Menu
+-----------------------------------*/
+$('.cart-toggle').click(function(){
+    var cart = $('.cart-toggle');
+    if(cart.hasClass('open')){
+        $('.header-cart').removeClass('open');
+    } else {
+        $('.header-cart').addClass('open');
+    }
+});
+
 /*--
     Mobile Menu
 -----------------------------------*/
@@ -193,14 +206,14 @@ $('.checkout-form input[type="checkbox"]').on('click', function(){
     }else {
         $('.collapse[data-collapse="'+$collapse+'"]').slideUp();
     }
-})
+});
 
 /*--
     Product Filter Toggle
 -----------------------------------*/
 $('.product-filter-toggle').on('click', function(){
     $('.product-filter-wrapper').slideToggle();
-})
+});
 
 /*-- 
     ScrollUp

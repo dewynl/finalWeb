@@ -18,7 +18,7 @@
                             </button>
 
                             <div class="dropdown-menu header-search-form">
-                                <form action="https://devitems.com/preview/outside/register.html#">
+                                <form action="#">
                                     <input type="text" placeholder="Search">
                                     <button><i class="fa fa-long-arrow-right"></i></button>
                                 </form>
@@ -27,7 +27,7 @@
                         <!-- header Account -->
                         <div class="header-account float-left">
                             <ul>
-                                <li><a href="https://devitems.com/preview/outside/register.html#"
+                                <li><a href="#"
                                        data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="https://devitems.com/preview/outside/login.html">Log in</a>
@@ -47,7 +47,7 @@
                         <!-- Header Cart -->
                         <div class="header-cart float-left">
                             <!-- Cart Toggle -->
-                            <a class="cart-toggle" href="https://devitems.com/preview/outside/register.html#"
+                            <a class="cart-toggle" href="#"
                                data-toggle="dropdown">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>2</span>
@@ -97,7 +97,7 @@
                                     <h5>Total <span>£12.00</span></h5>
                                 </div>
                                 <!-- Cart Button -->
-                                <div class="cart-bottom  clearfix">
+                                <div class="cart-bottom clearfix">
                                     <a href="https://devitems.com/preview/outside/checkout.html">Check out</a>
                                 </div>
                             </div>
@@ -117,4 +117,5 @@
             </div>
         </div>
     </div>
+
 </header>
