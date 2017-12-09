@@ -6,6 +6,7 @@ import static org.springframework.http.HttpStatus.*
 class OrdenController {
 
     OrdenService ordenService
+    ArticuloService articuloService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -114,16 +115,22 @@ class OrdenController {
     }
 
     def recibo_compra() {
+        println('realizar pago')
+        println session.usuario
         if(params.correcto && session.usuario) {
             // crear facturas
-
+            println('realizar pago')
             Usuario currentUser = session.usuario
             Carrito carrito = Carrito.findByUsuario(currentUser)
+
 
             Orden o = new Orden()
             o.usuario = currentUser
             o.itemOrden = new HashSet<ItemOrden>()
             carrito.itemOrdenes.each {
+                Articulo a = it.articulo
+                a.cantidad -= it.cantidad
+                a.save(flush: true)
                 o.itemOrden.add(it)
             }
             o.generarTotal()

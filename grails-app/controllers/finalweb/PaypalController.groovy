@@ -76,7 +76,7 @@ class PaypalController {
 
     def realizar_pago() {
         if(params.paymentId && params.PayerID) {
-            println('realizar pago')
+            println 'ougiyhjkn'
             String endpoint = "https://api.sandbox.paypal.com"
             Map sdkConfig = [:] //= grailsApplication.config.paypal.sdkConfig//[mode: 'live']
             //sdkConfig['grant-type'] = "client_credentials"
@@ -95,7 +95,7 @@ class PaypalController {
             forward(controller: 'articulo', action: 'index', params: ['correcto':true])
         }
         else {
-            redirect url: "http://localhost:8080"
+            redirect url: "http://localhost:7878"
         }
     }
 
