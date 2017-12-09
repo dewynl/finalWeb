@@ -11,7 +11,7 @@ class PaypalController {
     String clientSecret = "EJFZNmbmj-bjthzbJZQiMyKaUJ0jquMeizGY8Mw8MmuhC_lJxJX13b3Cd6Hh4hwTgBqXJt9qs4xKPtwX"
 
     def index() {
-
+        println "Carrito Index"
         Usuario currentUser = null
         Carrito carritoUsuario = null;
         if (session.usuario){
@@ -70,13 +70,12 @@ class PaypalController {
                 retUrl = links.href
             }
         }
-
         redirect url: approvalUrl ?: '/', method: 'POST'
     }
 
     def realizar_pago() {
         if(params.paymentId && params.PayerID) {
-            println 'ougiyhjkn'
+            println 'Realizar Pago'
             String endpoint = "https://api.sandbox.paypal.com"
             Map sdkConfig = [:] //= grailsApplication.config.paypal.sdkConfig//[mode: 'live']
             //sdkConfig['grant-type'] = "client_credentials"
@@ -92,7 +91,7 @@ class PaypalController {
             def map = new JsonSlurper().parseText(paypalPayment.toString())
             println map
 
-            forward(controller: 'articulo', action: 'index', params: ['correcto':true])
+            forward(controller: 'orden', action: 'recibo_compra', params: ['correcto':true])
         }
         else {
             redirect url: "http://localhost:7878"

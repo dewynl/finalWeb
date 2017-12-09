@@ -115,15 +115,13 @@ class OrdenController {
     }
 
     def recibo_compra() {
-        println('realizar pago')
+        println('Recibo Compra')
         println session.usuario
         if(params.correcto && session.usuario) {
             // crear facturas
             println('realizar pago')
             Usuario currentUser = session.usuario
             Carrito carrito = Carrito.findByUsuario(currentUser)
-
-
             Orden o = new Orden()
             o.usuario = currentUser
             o.itemOrden = new HashSet<ItemOrden>()
@@ -136,7 +134,6 @@ class OrdenController {
             o.generarTotal()
             o.despachado = false
             o.recibido = false
-
             o.save(flush: true)
 
             carrito.itemOrdenes =  new HashSet<>()
