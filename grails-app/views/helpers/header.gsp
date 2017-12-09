@@ -4,7 +4,7 @@
             <div class="col-xs-12">
                 <!-- logo -->
                 <div class="header-logo float-left">
-                    <a href="/home">
+                    <a href="/">
                         <g:img dir="images" file="img/bg/logo.png"/>
                     </a>
 
@@ -50,7 +50,7 @@
                             <a class="cart-toggle" href="#"
                                data-toggle="dropdown">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>2</span>
+                                <span id="cant_articulos">2</span>
                             </a>
                             <!-- Mini Cart Brief -->
                             <div class="mini-cart-brief dropdown-menu text-left">
@@ -92,7 +92,7 @@
                     </div>
                     <nav class="main-menu menu-right float-right" style="display: block;">
                         <ul>
-                            <li><a href="/home">Home</a>
+                            <li><a href="/">Home</a>
                             </li>
                             <li><a href="/shop">Tienda</a>
                             </li>
@@ -104,5 +104,7 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+       // $.ajax({url:'/carrito/count/'})
+    </script>
 </header>

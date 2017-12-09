@@ -10,7 +10,9 @@ class ArticuloController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+        session.usuario = Usuario.findByNombre("Eva", [max: 1])
         params.max = Math.min(max ?: 10, 100)
+        return [articuloCount: articuloService.count(), 'articulos': articuloService.list(params)]
      //   println("HOlaa"+articuloService.list(params).size())
         Usuario us = Usuario.findByNombre("Eva")
         Integer total= 0

@@ -26,6 +26,11 @@ $('.cart-toggle').click(function(){
     }
 });
 
+$(".product-filter-toggle").click(function () {
+    $('.product-filter-wrapper').slideToggle();
+});
+
+
 /*--
     Mobile Menu
 -----------------------------------*/

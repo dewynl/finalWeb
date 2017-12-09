@@ -13,12 +13,11 @@ class CarritoController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         Usuario us = Usuario.findByNombre("Eva")
-        Integer total= 0
-        for(ItemOrden a in Carrito.findByUsuario(us).itemOrdenes){
+        Integer total = 0
+        for (ItemOrden a in Carrito.findByUsuario(us).itemOrdenes) {
             total += (a.cantidad * a.articulo.precio)
         }
 
-       // println("adentro2-->" + Carrito.findByUsuario(us).itemOrdenes.size() )
         return [carritoCount: carritoService.count(), 'carrito': Carrito.findByUsuario(us).itemOrdenes, "total": total]
     }
 
@@ -32,8 +31,6 @@ class CarritoController {
 
     def agregar() {
 
-        println(params.cantidad)
-
         Articulo a = Articulo.findById(Integer.parseInt(params.id_articulo))
 
         Usuario us = Usuario.findByNombre("Eva")
@@ -42,22 +39,17 @@ class CarritoController {
 
         Carrito c = Carrito.findByUsuario(us)
 
-
-        if(a.cantidad >= Integer.parseInt(params.cantidad)) {
+        if (a.cantidad >= Integer.parseInt(params.cantidad)) {
             ItemOrden io = new ItemOrden()
             io.setArticulo(a)
             io.setCantidad(Integer.parseInt(params.cantidad))
-
             c.itemOrdenes.add(io)
             carritoService.save(c)
-            println("adentro -> "+ Carrito.findByUsuario(us).itemOrdenes.size())
-
             flash.message = "Producto ${a.nombre} agregado al carrito!"
-        }
-        else {
+        } else {
             flash.error = "Producto ${a.nombre} No tiene suficiente existencia!"
         }
-        redirect(controller: 'producto', action: 'catalogo')
+        redirect(controller: 'articulo', action: 'index')
     }
 
     def save(Carrito carrito) {
@@ -69,7 +61,7 @@ class CarritoController {
         try {
             carritoService.save(carrito)
         } catch (ValidationException e) {
-            respond carrito.errors, view:'create'
+            respond carrito.errors, view: 'create'
             return
         }
 
@@ -95,7 +87,7 @@ class CarritoController {
         try {
             carritoService.save(carrito)
         } catch (ValidationException e) {
-            respond carrito.errors, view:'edit'
+            respond carrito.errors, view: 'edit'
             return
         }
 
@@ -104,7 +96,7 @@ class CarritoController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'carrito.label', default: 'Carrito'), carrito.id])
                 redirect carrito
             }
-            '*'{ respond carrito, [status: OK] }
+            '*' { respond carrito, [status: OK] }
         }
     }
 
@@ -119,9 +111,9 @@ class CarritoController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'carrito.label', default: 'Carrito'), id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -131,7 +123,7 @@ class CarritoController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'carrito.label', default: 'Carrito'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 

@@ -112,4 +112,35 @@ class OrdenController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def recibo_compra() {
+        if(params.correcto && session.usuario) {
+            // crear facturas
+
+            Usuario currentUser = session.usuario
+            Carrito carrito = Carrito.findByUsuario(currentUser)
+
+            Orden o = new Orden()
+            o.usuario = currentUser
+            o.itemOrden = new HashSet<ItemOrden>()
+            carrito.itemOrdenes.each {
+                o.itemOrden.add(it)
+            }
+            o.generarTotal()
+            o.despachado = false
+            o.recibido = false
+
+            o.save(flush: true)
+
+            carrito.itemOrdenes =  new HashSet<>()
+            carrito.save(flush: true)
+
+            // mandar a buscar reportes
+            render(view: 'orden', model: ["orden": o])
+            // forward(controller: 'producto', action: 'catalogo', params: ['correcto':true])
+        }
+        else {
+            redirect(url: "/")
+        }
+    }
 }
