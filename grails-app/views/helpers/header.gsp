@@ -38,7 +38,7 @@
                                         </li>
                                         <li><a href="https://devitems.com/preview/outside/wishlist.html">Wish list</a>
                                         </li>
-                                        <li><a href="https://devitems.com/preview/outside/checkout.html">Checkout</a>
+                                        <li><a href="/carrito/index">Checkout</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -85,7 +85,7 @@
                                 </div>
                                 <!-- Cart Button -->
                                 <div class="cart-bottom clearfix">
-                                    <a href="https://devitems.com/preview/outside/checkout.html">Check out</a>
+                                    <a href="/carrito/index">Check out</a>
                                 </div>
                             </div>
                         </div>
