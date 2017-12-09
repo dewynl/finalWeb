@@ -11,7 +11,12 @@ class DepartamentoController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        return [departamentoCount: departamentoService.count(),'departamentos': departamentoService.list(params)]
+        Usuario us = Usuario.findByNombre("Eva")
+        Integer total= 0
+        for(ItemOrden a in Carrito.findByUsuario(us).itemOrdenes){
+            total += (a.cantidad * a.articulo.precio)
+        }
+        return ['carrito': Carrito.findByUsuario(us).itemOrdenes, "total": total, departamentoCount: departamentoService.count(),'departamentos': departamentoService.list(params)]
     }
 
     def show(Long id) {

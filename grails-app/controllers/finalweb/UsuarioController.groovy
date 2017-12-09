@@ -13,7 +13,12 @@ class UsuarioController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        return [usuarioCount: usuarioService.count(), 'usuarios': usuarioService.list(params)]
+        Usuario us = Usuario.findByNombre("Eva")
+        Integer total= 0
+        for(ItemOrden a in Carrito.findByUsuario(us).itemOrdenes){
+            total += (a.cantidad * a.articulo.precio)
+        }
+        return ['carrito': Carrito.findByUsuario(us).itemOrdenes, "total": total, usuarioCount: usuarioService.count(), 'usuarios': usuarioService.list(params)]
     }
 
     def show(Long id) {

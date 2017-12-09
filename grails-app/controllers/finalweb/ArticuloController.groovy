@@ -12,7 +12,12 @@ class ArticuloController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
      //   println("HOlaa"+articuloService.list(params).size())
-        return [articuloCount: articuloService.count(), 'articulos': articuloService.list(params)]
+        Usuario us = Usuario.findByNombre("Eva")
+        Integer total= 0
+        for(ItemOrden a in Carrito.findByUsuario(us).itemOrdenes){
+            total += (a.cantidad * a.articulo.precio)
+        }
+        return [ articuloCount: articuloService.count(), 'articulos': articuloService.list(params), 'carrito': Carrito.findByUsuario(us).itemOrdenes, "total": total]
     }
 
     def show(Long id) {

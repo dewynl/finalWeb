@@ -11,7 +11,23 @@ class OrdenController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond ordenService.list(params), model:[ordenCount: ordenService.count()]
+        Usuario us = Usuario.findByNombre("Eva")
+        Integer total= 0
+        for(ItemOrden a in Carrito.findByUsuario(us).itemOrdenes){
+            total += (a.cantidad * a.articulo.precio)
+        }
+
+        List<Orden> lista = new ArrayList<Orden>()
+        for(Orden o : ordenService.list(params)) {
+            if (!o.despachado) lista.add(o)
+        }
+        return [ ordenCount: ordenService.count(), 'ordenes': lista, 'carrito': Carrito.findByUsuario(us).itemOrdenes, "total": total]
+    }
+    def despachar (Long id){
+        Orden o = Orden.findById(id)
+        o.despachado = true
+        ordenService.save(o)
+
     }
 
     def show(Long id) {

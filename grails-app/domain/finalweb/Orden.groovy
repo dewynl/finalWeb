@@ -4,9 +4,9 @@ class Orden {
 
     Usuario usuario
     Set<ItemOrden> itemOrden
-    Double total
-    boolean despachado
-    boolean recibido
+    Double total = 0d
+    boolean despachado = false
+    boolean recibido = false
 
     static constraints = {
         usuario nullable: false, blank: false
@@ -19,5 +19,11 @@ class Orden {
         table 'orden'
         despachado defaultValue: false
         recibido defaultValue: false
+    }
+
+    def generarTotal(){
+        this.itemOrden.each {
+            this.total+=it.articulo.precio * it.cantidad
+        }
     }
 }

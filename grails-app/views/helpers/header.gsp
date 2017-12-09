@@ -56,45 +56,32 @@
                             <div class="mini-cart-brief dropdown-menu text-left">
                                 <!-- Cart Products -->
                                 <div class="all-cart-product clearfix">
-                                    <div class="single-cart clearfix">
+                                    <g:each in="${carrito}" var="a">
+
+                                        <div class="single-cart clearfix">
                                         <div class="cart-image">
-                                            <a href="https://devitems.com/preview/outside/product-details.html"><img
-                                                    src="./Outside - Minimalist Ecommerce HTML Template_files/cart-1.jpg"
-                                                    alt=""></a>
+                                            <a href="/articulo/show/${a.id}"><img
+                                                    src="data:image/png;base64,${a.articulo.foto}"
+                                                    alt=""/></a>
                                         </div>
 
                                         <div class="cart-info">
-                                            <h5><a href="https://devitems.com/preview/outside/product-details.html">Le Parc Minotti Chair</a>
+                                            <h5><a >${a.articulo.nombre}</a>
                                             </h5>
 
-                                            <p>1 x £9.00</p>
+                                            <p>${a.cantidad} x $${a.articulo.precio}</p>
                                             <a href="https://devitems.com/preview/outside/register.html#"
                                                class="cart-delete" title="Remove this item"><i
                                                     class="pe-7s-trash"></i></a>
                                         </div>
                                     </div>
+                                    </g:each>
 
-                                    <div class="single-cart clearfix">
-                                        <div class="cart-image">
-                                            <a href="https://devitems.com/preview/outside/product-details.html"><img
-                                                    src="./Outside - Minimalist Ecommerce HTML Template_files/cart-2.jpg"
-                                                    alt=""></a>
-                                        </div>
 
-                                        <div class="cart-info">
-                                            <h5><a href="https://devitems.com/preview/outside/product-details.html">DSR Eiffel chair</a>
-                                            </h5>
-
-                                            <p>1 x £9.00</p>
-                                            <a href="https://devitems.com/preview/outside/register.html#"
-                                               class="cart-delete" title="Remove this item"><i
-                                                    class="pe-7s-trash"></i></a>
-                                        </div>
-                                    </div>
                                 </div>
                                 <!-- Cart Total -->
                                 <div class="cart-totals">
-                                    <h5>Total <span>£12.00</span></h5>
+                                    <h5>Total <span>$ ${total}</span></h5>
                                 </div>
                                 <!-- Cart Button -->
                                 <div class="cart-bottom clearfix">
