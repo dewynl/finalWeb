@@ -27,7 +27,7 @@ class OrdenController {
     def despachar (Long id){
         Orden o = Orden.findById(id)
         o.despachado = true
-        ordenService.save(o)
+        o.save()
 
     }
 
