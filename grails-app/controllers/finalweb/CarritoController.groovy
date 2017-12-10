@@ -32,6 +32,7 @@ class CarritoController {
     def agregar() {
 
         Articulo a = Articulo.findById(Integer.parseInt(params.id_articulo))
+        println params
 
         Usuario us = Usuario.findByNombre("Eva")
 
