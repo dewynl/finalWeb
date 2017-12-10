@@ -57,6 +57,7 @@
 
                                         <th class="pro-title">Id</th>
                                         <th class="pro-title">Usuario</th>
+                                        <th class="pro-title">Direccion Usuario</th>
                                         <th class="pro-quantity">Cantidad articulos</th>
                                         <th class="pro-subtotal">Total</th>
                                         <th class="pro-remove"></th>
@@ -68,17 +69,15 @@
 
 
                                         <tr>
-                                            <td class="pro-quantity"><span class="amount">${a.id}</span></td>
+                                            <td class="pro-quantity"><a href="/orden/show/${a.id}"><span class="amount">${a.id}</span></a></td>
                                             <td class="pro-title"><a href="#">${a.usuario.nombre}</a></td>
+                                            <td class="pro-title"><a href="#">${a.usuario.direccion}</a></td>
                                             <td class="pro-price"><span class="amount">${a.itemOrden.size()}</span></td>
                                             <td class="pro-quantity"><span class="amount">${a.total}</span></td>
 
-
-                                            <td >
-                                                <div class="proceed-to-checkout section mt-30">
-                                                    <a href="/orden/despachar/${a.id}">Despachar orden</a>
-                                                </div>
+                                            <td class="pro-add-to-cart"><a href="/orden/despachar/${a.id}" class="add-to-cart">Despachar</a>
                                             </td>
+
                                         </tr>
                                     </g:each>
 

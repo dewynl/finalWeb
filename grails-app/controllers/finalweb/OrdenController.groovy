@@ -24,15 +24,18 @@ class OrdenController {
         }
         return [ ordenCount: ordenService.count(), 'ordenes': lista, 'carrito': Carrito.findByUsuario(us).itemOrdenes, "total": total]
     }
+
     def despachar (Long id){
+
         Orden o = Orden.findById(id)
         o.despachado = true
-        ordenService.save(o)
+        o.save(flush: true)
+        redirect action:"index", method:"GET"
 
     }
 
     def show(Long id) {
-        respond ordenService.get(id)
+        return ['orden': ordenService.get(id)]
     }
 
     def create() {

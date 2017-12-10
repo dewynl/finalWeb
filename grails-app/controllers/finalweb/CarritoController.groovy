@@ -34,6 +34,7 @@ class CarritoController {
         println params
 
         Articulo a = Articulo.findById(Integer.parseInt(params.id_articulo))
+        println params
 
         Usuario us = session.usuario
 
