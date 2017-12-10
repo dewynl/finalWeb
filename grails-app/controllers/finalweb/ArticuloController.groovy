@@ -16,6 +16,12 @@ class ArticuloController {
         for (ItemOrden a in Carrito.findByUsuario(session.usuario).itemOrdenes) {
             total += (a.cantidad * a.articulo.precio)
         }
+        List<Articulo> lista = new ArrayList<>()
+
+        articuloService.list(params).each {
+            if(it.cantidad>0) lista.add(it)
+        }
+
         return [articuloCount: articuloService.count(), 'articulos': articuloService.list(params), 'carrito': Carrito.findByUsuario(session.usuario).itemOrdenes, "total": total]
     }
 
