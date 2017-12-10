@@ -24,7 +24,7 @@ class ArticuloController {
             if(it.cantidad>0) lista.add(it)
         }
 
-        return [ articuloCount: articuloService.count(), 'articulos': lista, 'carrito': Carrito.findByUsuario(us).itemOrdenes, "total": total]
+        return [ articuloCount: articuloService.count(), 'articulos': lista, 'carrito': Carrito.findByUsuario(us).itemOrdenes.take(5), "total": total]
     }
 
     def show(Long id) {

@@ -22,7 +22,7 @@ class OrdenController {
         for(Orden o : ordenService.list(params)) {
             if (!o.despachado) lista.add(o)
         }
-        return [ ordenCount: ordenService.count(), 'ordenes': lista, 'carrito': Carrito.findByUsuario(us).itemOrdenes, "total": total]
+        return [ ordenCount: ordenService.count(), 'ordenes': lista, 'carrito': Carrito.findByUsuario(us).itemOrdenes.take(5), "total": total]
     }
 
     def despachar (Long id){
@@ -141,6 +141,26 @@ class OrdenController {
 
             carrito.itemOrdenes =  new HashSet<>()
             carrito.save(flush: true)
+
+            String texto = ""
+            texto  = "Orden nueva!\n\n"
+            texto += "\tOrden No: ${o.id}\n"
+            texto += "\tUsuario: ${o.usuario.nombre} ${o.usuario.apellido}\n\n"
+            texto += "\tUsuario Direccion: ${o.usuario.direccion}\n"
+            texto += "\tOrden Articulos: \n\n"
+            o.itemOrden.each {
+                texto+= "\t \t id:${it.articulo.id} nombre: ${it.articulo.nombre} cantidad: ${it.cantidad}\n"
+            }
+            texto+= "\t Total: ${o.total}"
+            texto += "Un saludo."
+
+            sendMail {
+                multipart false
+                subject "Ubei Store Registration"
+                text texto
+                to "ubeiAlmacen@gmail.com"
+                from "ubeistore@gmail.com"
+            }
 
             // mandar a buscar reportes
             render(view: 'orden', model: ["orden": o])

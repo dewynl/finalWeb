@@ -38,15 +38,28 @@ class CarritoController {
 
         //Usuario usuario=(Usuario) applicationContext.springSecurityService.getCurrentUser()
 
+        boolean flag =false
         Carrito c = Carrito.findByUsuario(us)
+        c.itemOrdenes.each {
+            if(it.articulo.id == a.id){
+                flag = true
+                it.cantidad += Integer.parseInt(params.cantidad)
+            }
+
+        }
+
 
         if (a.cantidad >= Integer.parseInt(params.cantidad)) {
-            ItemOrden io = new ItemOrden()
-            io.setArticulo(a)
-            io.setCantidad(Integer.parseInt(params.cantidad))
-            c.itemOrdenes.add(io)
+            if(!flag) {
+                ItemOrden io = new ItemOrden()
+                io.setArticulo(a)
+                io.setCantidad(Integer.parseInt(params.cantidad))
+                c.itemOrdenes.add(io)
+
+                flash.message = "Producto ${a.nombre} agregado al carrito!"
+            }
             carritoService.save(c)
-            flash.message = "Producto ${a.nombre} agregado al carrito!"
+
         } else {
             flash.error = "Producto ${a.nombre} No tiene suficiente existencia!"
         }

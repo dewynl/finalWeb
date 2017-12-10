@@ -85,7 +85,7 @@
                                 </div>
                                 <!-- Cart Button -->
                                 <div class="cart-bottom clearfix">
-                                    <a href="https://devitems.com/preview/outside/checkout.html">Check out</a>
+                                    <a href="/carrito/index">ir al carrito</a>
                                 </div>
                             </div>
                         </div>
