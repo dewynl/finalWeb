@@ -141,8 +141,8 @@ class OrdenController {
             carrito.save(flush: true)
 
             // mandar a buscar reportes
-            render(view: 'show', model: ["orden": o])
-            // forward(controller: 'producto', action: 'catalogo', params: ['correcto':true])
+            //render(view: 'show', model: ["orden": o])
+            forward(controller: 'orden', action: 'show/'+o.id, params: ['id': o.id])
         }
         else {
             redirect(url: "/")

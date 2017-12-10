@@ -13,11 +13,9 @@
     <!-- Bootstrap css -->
     <asset:stylesheet src="application.css"/>
     <g:javascript src="modernizr-2.8.3.min.js"/>
-
 </head>
 
 <body>
-
 <!-- Body main wrapper start -->
 <div class="wrapper">
 

@@ -41,12 +41,14 @@
                         <div class="product-details section">
                             <!-- Title -->
                             <h1 class="title">Orden No: ${orden.id}</h1>
+
                             <h3 class="title">Usuario: ${orden.usuario.nombre}</h3>
+
                             <h3 class="pd-sub-title">Direccion: ${orden.usuario.direccion}</h3>
                             <!-- Price Ratting -->
                             <div class="price-ratting section">
                                 <!-- Price -->
-                                <h5 class="pd-sub-title">Total: </h5>
+                                <h5 class="pd-sub-title">Total:</h5>
                                 <span class="price float-left"><span class="new">$ ${orden.total}</span></span>
 
                             </div>
@@ -54,6 +56,7 @@
                             <!-- Short Description -->
                             <div class="short-desc section">
                                 <h5 class="pd-sub-title">Articulos</h5>
+
                                 <div class="cart-table table-responsive mb-40">
                                     <table>
                                         <thead>
@@ -73,10 +76,12 @@
                                                 <td class="pro-thumbnail"><a href="#"><img
                                                         src="data:image/png;base64,${a.articulo.foto}" alt=""></a></td>
                                                 <td class="pro-title"><a href="#">${a.articulo.nombre}</a></td>
-                                                <td class="pro-price"><span class="amount">${a.articulo.precio}</span></td>
+                                                <td class="pro-price"><span class="amount">${a.articulo.precio}</span>
+                                                </td>
                                                 <td class="pro-quantity"><span class="amount">${a.cantidad}</span></td>
-                                                <td class="pro-quantity"><span class="amount">${a.cantidad * a.articulo.precio}</span></td>
-                                               
+                                                <td class="pro-quantity"><span
+                                                        class="amount">${a.cantidad * a.articulo.precio}</span></td>
+
                                             </tr>
                                         </g:each>
 
@@ -86,13 +91,10 @@
 
                             </div>
                             <!-- Product Size -->
-
-
                             <!-- Quantity Cart -->
                             <div class="quantity-cart section">
-
+                                <a href="/jasper/reporteOrden/${orden.id}" class="add-to-cart">Resumen Orden</a>
                                 <button href="/oden/despachar/${orden.id}" class="add-to-cart">Despachar</button>
-
                             </div>
 
                             <div class="share-icons section">
