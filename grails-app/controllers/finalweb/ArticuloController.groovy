@@ -18,7 +18,13 @@ class ArticuloController {
         for(ItemOrden a in Carrito.findByUsuario(us).itemOrdenes){
             total += (a.cantidad * a.articulo.precio)
         }
-        return [ articuloCount: articuloService.count(), 'articulos': articuloService.list(params), 'carrito': Carrito.findByUsuario(us).itemOrdenes, "total": total]
+        List<Articulo> lista = new ArrayList<>()
+
+        articuloService.list(params).each {
+            if(it.cantidad>0) lista.add(it)
+        }
+
+        return [ articuloCount: articuloService.count(), 'articulos': lista, 'carrito': Carrito.findByUsuario(us).itemOrdenes, "total": total]
     }
 
     def show(Long id) {

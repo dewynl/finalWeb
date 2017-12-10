@@ -76,7 +76,7 @@
                                                 <td class="pro-price"><span class="amount">${a.articulo.precio}</span></td>
                                                 <td class="pro-quantity"><span class="amount">${a.cantidad}</span></td>
                                                 <td class="pro-quantity"><span class="amount">${a.cantidad * a.articulo.precio}</span></td>
-                                               
+
                                             </tr>
                                         </g:each>
 
