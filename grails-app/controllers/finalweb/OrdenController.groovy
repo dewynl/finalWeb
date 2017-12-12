@@ -3,6 +3,8 @@ package finalweb
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
+
+
 class OrdenController {
 
     OrdenService ordenService
@@ -117,6 +119,9 @@ class OrdenController {
         }
     }
 
+    def generarPDF(){
+
+    }
     def recibo_compra() {
         println('Recibo Compra')
         println session.usuario

@@ -52,6 +52,9 @@ dependencies {
     runtime "com.h2database:h2"
     runtime "org.apache.tomcat:tomcat-jdbc"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.2"
+    compile group: 'com.google.code.gson', name: 'gson', version: '1.7.2'
+
+    runtime 'net.sourceforge.jexcelapi:jxl:2.6.12'
 
     /*compile 'org.grails.plugins:jasper:2.0.0.RC1'*/
     compile 'org.grails.plugins:paypal-payments:0.1.0'
