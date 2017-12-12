@@ -9,17 +9,13 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-
     <!-- All CSS Files -->
     <!-- Bootstrap css -->
     <asset:stylesheet src="application.css"/>
-
     <g:javascript src="modernizr-2.8.3.min.js"/>
-
 </head>
 
 <body>
-
 <!-- Body main wrapper start -->
 <div class="wrapper">
 
@@ -29,8 +25,6 @@
     <div id="show-articulo" class="content scaffold-show" role="main">
 
     </div>
-    <!-- PAGE BANNER SECTION -->
-    <!-- END PAGE BANNER SECTION -->
     <!-- PAGE SECTION START -->
     <div class="page-section section pt-120 pb-120">
         <div class="container">
@@ -74,56 +68,25 @@
                             <!-- Quantity Cart -->
                             <div class="quantity-cart section">
                                 <div class="product-quantity">
-                                    <form action="/carrito/agregar">
-                                        <input type="text" name="cantidad" value="0">
+                                    <form action="/carrito/agregar" method="post">
+                                        <input type="number" name="cantidad" value="">
                                         <input type="hidden" name="id_articulo" value="${articulo.id}">
-                                        <span class="dec qtybtn"><i class="fa fa-angle-left"></i></span><span
-                                            class="inc qtybtn"><i class="fa fa-angle-right"></i></span></div>
+                                        <span class="dec qtybtn"><i class="fa fa-angle-left"></i></span>
+                                        <span class="inc qtybtn"><i class="fa fa-angle-right"></i></span>
+                                </div>
                                 <button class="add-to-cart">add to cart</button>
                             </form>
-                            </div>
-
-                            <div class="share-icons section">
-                                <span>share :</span>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <!-- PAGE SECTION END -->
-
-    <!-- QUICK VIEW MODAL START-->
-    <!-- QUICK VIEW MODAL END-->
-
     <!-- FOOTER TOP SECTION START -->
     <g:include view="helpers/footer.gsp"/>
-
 </div>
-<!-- Body main wrapper end -->
-
-
-<!-- Placed JS at the end of the document so the pages load faster -->
-
-<!-- jQuery latest version -->
-<script src="js/vendor/jquery-3.1.1.min.js"></script>
-<!-- Bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
-<!-- Plugins js -->
-<script src="js/plugins.js"></script>
-<!-- Ajax Mail js -->
-<script src="js/ajax-mail.js"></script>
-<!-- Main js -->
-<script src="js/main.js"></script><a id="scrollUp" href="#top"
-                                     style="position: fixed; z-index: 2147483647; display: none;"><i
-            class="fa fa-angle-up"></i></a>
 <asset:javascript src="application.js"/>
-
 </body></html>
 

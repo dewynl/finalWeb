@@ -12,10 +12,8 @@ class ArticuloController {
     def index(Integer max) {
         session.usuario = Usuario.findByNombre("Eva", [max: 1])
         params.max = Math.min(max ?: 10, 100)
-     //   println("HOlaa"+articuloService.list(params).size())
-        Usuario us = Usuario.findByNombre("Eva")
-        Integer total= 0
-        for(ItemOrden a in Carrito.findByUsuario(us).itemOrdenes){
+        Integer total = 0
+        for (ItemOrden a in Carrito.findByUsuario(session.usuario).itemOrdenes) {
             total += (a.cantidad * a.articulo.precio)
         }
         List<Articulo> lista = new ArrayList<>()
@@ -24,11 +22,10 @@ class ArticuloController {
             if(it.cantidad>0) lista.add(it)
         }
 
-        return [ articuloCount: articuloService.count(), 'articulos': lista, 'carrito': Carrito.findByUsuario(us).itemOrdenes.take(5), "total": total]
+        return [articuloCount: articuloService.count(), 'articulos': articuloService.list(params), 'carrito': Carrito.findByUsuario(session.usuario).itemOrdenes, "total": total]
     }
 
     def show(Long id) {
-        println("holaa->>"+ id)
         return ['articulo': articuloService.get(id)]
     }
 
@@ -48,7 +45,7 @@ class ArticuloController {
         try {
             articuloService.save(articulo)
         } catch (ValidationException e) {
-            respond articulo.errors, view:'create'
+            respond articulo.errors, view: 'create'
             return
         }
 
@@ -74,7 +71,7 @@ class ArticuloController {
         try {
             articuloService.save(articulo)
         } catch (ValidationException e) {
-            respond articulo.errors, view:'edit'
+            respond articulo.errors, view: 'edit'
             return
         }
 
@@ -83,7 +80,7 @@ class ArticuloController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'articulo.label', default: 'Articulo'), articulo.id])
                 redirect articulo
             }
-            '*'{ respond articulo, [status: OK] }
+            '*' { respond articulo, [status: OK] }
         }
     }
 
@@ -98,9 +95,9 @@ class ArticuloController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'articulo.label', default: 'Articulo'), id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -110,7 +107,7 @@ class ArticuloController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'articulo.label', default: 'Articulo'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

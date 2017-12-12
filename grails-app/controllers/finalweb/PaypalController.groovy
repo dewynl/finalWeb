@@ -94,7 +94,7 @@ class PaypalController {
             forward(controller: 'orden', action: 'recibo_compra', params: ['correcto':true])
         }
         else {
-            redirect url: "http://localhost:7878"
+            redirect url: "http://localhost:7878/"
         }
     }
 

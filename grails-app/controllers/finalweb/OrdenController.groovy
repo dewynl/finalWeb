@@ -123,11 +123,9 @@ class OrdenController {
 
     }
     def recibo_compra() {
-        println('Recibo Compra')
         println session.usuario
         if(params.correcto && session.usuario) {
             // crear facturas
-            println('realizar pago')
             Usuario currentUser = session.usuario
             Carrito carrito = Carrito.findByUsuario(currentUser)
             Orden o = new Orden()
@@ -168,8 +166,8 @@ class OrdenController {
             }
 
             // mandar a buscar reportes
-            render(view: 'orden', model: ["orden": o])
-            // forward(controller: 'producto', action: 'catalogo', params: ['correcto':true])
+            //render(view: 'show', model: ["orden": o])
+            forward(controller: 'orden', action: 'show/'+o.id, params: ['id': o.id])
         }
         else {
             redirect(url: "/")

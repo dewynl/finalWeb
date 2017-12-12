@@ -31,10 +31,12 @@ class CarritoController {
 
     def agregar() {
 
+        println params
+
         Articulo a = Articulo.findById(Integer.parseInt(params.id_articulo))
         println params
 
-        Usuario us = Usuario.findByNombre("Eva")
+        Usuario us = session.usuario
 
         //Usuario usuario=(Usuario) applicationContext.springSecurityService.getCurrentUser()
 
