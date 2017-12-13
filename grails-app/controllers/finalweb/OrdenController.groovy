@@ -9,6 +9,7 @@ import net.sf.jasperreports.engine.JasperFillManager
 import net.sf.jasperreports.engine.JasperPrint
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource
 import net.sf.jasperreports.engine.export.JRPdfExporter
+import pl.touk.excel.export.WebXlsxExporter
 
 import static org.springframework.http.HttpStatus.*
 
@@ -200,6 +201,7 @@ class OrdenController {
                 o.itemOrden.add(it)
             }
             o.generarTotal()
+            o.generarRNC()
             o.despachado = false
             o.recibido = false
             o.save(flush: true)
@@ -216,5 +218,38 @@ class OrdenController {
         else {
             redirect(url: "/")
         }
+    }
+    def generar_excel() {
+
+        List<Orden> Ordenes = Orden.findAll();
+        def algo = []
+
+        Ordenes.each {
+            def id = it.id
+            def compradorNombre = it.usuario.nombre
+            def total = it.total
+
+
+            it.itemOrden.each{ io->
+                def valx = new HashMap()
+                valx['OrdenNo'] = id
+                valx['NombreUsuario'] = compradorNombre
+                valx['Ordentotal'] = total
+                valx['mercanciaId'] = io.id
+                valx['mercanciaNombre'] = io.articulo.nombre
+                valx['mercanciaPrecio'] = io.articulo.precio
+                algo.add(valx)
+
+            }
+        }
+        def withProperties = ['OrdenNo', 'NombreUsuario','Ordentotal', 'mercanciaId', 'mercanciaNombre', 'mercanciaPrecio']
+        def headers = ['Id', 'Comprador Nombre','Orden total', 'Mercancia Id', 'Mercancia Nombre', 'Mercancia Precio']
+        new WebXlsxExporter().with {
+            setResponseHeaders(response)
+            fillHeader(headers)
+            add(algo, withProperties)
+            save(response.outputStream)
+        }
+
     }
 }

@@ -5,6 +5,7 @@ class Orden {
     Usuario usuario
     Set<ItemOrden> itemOrden
     Double total = 0d
+    String comprobante
     boolean despachado = false
     boolean recibido = false
 
@@ -29,5 +30,10 @@ class Orden {
         this.itemOrden.each {
             this.total+=it.articulo.precio * it.cantidad
         }
+    }
+    String generarRNC(){
+        def result = "A0100100102" +  String.format("%08d", Orden.count());
+        this.comprobante = result
+
     }
 }

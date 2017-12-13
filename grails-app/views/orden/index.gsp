@@ -51,6 +51,7 @@
                     <div class="col-xs-12">
                         <div id="list-orden" class="content scaffold-list" role="main">
                             <div class="cart-table table-responsive mb-40">
+                                <g:link class="btn btn-lg btn-primary" style="width: 100%" controller="orden" action="generar_excel">EXPORTAR A EXCELL</g:link>
                                 <table>
                                     <thead>
                                     <tr>
@@ -59,6 +60,7 @@
                                         <th class="pro-title">Usuario</th>
                                         <th class="pro-title">Direccion Usuario</th>
                                         <th class="pro-quantity">Cantidad articulos</th>
+                                        <th class="pro-quantity">Comprobante</th>
                                         <th class="pro-subtotal">Total</th>
                                         <th class="pro-remove"></th>
                                     </tr>
@@ -73,6 +75,7 @@
                                             <td class="pro-title"><a href="#">${a.usuario.nombre}</a></td>
                                             <td class="pro-title"><a href="#">${a.usuario.direccion}</a></td>
                                             <td class="pro-price"><span class="amount">${a.itemOrden.size()}</span></td>
+                                            <td class="pro-quantity"><a href="#">${a.comprobante}</a></td>
                                             <td class="pro-quantity"><span class="amount">${a.total}</span></td>
 
                                             <td class="pro-add-to-cart"><a href="/orden/despachar/${a.id}" class="add-to-cart">Despachar</a>
@@ -83,6 +86,7 @@
 
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>
