@@ -89,7 +89,7 @@
                             <!-- Product Size -->
                             <!-- Quantity Cart -->
                             <div class="quantity-cart section">
-                                <a href="/jasper/reporteOrden/${orden.id}" class="add-to-cart">Resumen Orden</a>
+                                <a href="/jasper/generate_invoice/${orden.id}" class="add-to-cart">Resumen Orden</a>
                                 <button href="/oden/despachar/${orden.id}" class="add-to-cart">Despachar</button>
                             </div>
 

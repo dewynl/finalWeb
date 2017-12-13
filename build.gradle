@@ -23,6 +23,9 @@ apply plugin:"org.grails.grails-gsp"
 repositories {
     mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
+    maven{
+        url "http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/"
+    }
 }
 
 dependencies {
@@ -56,8 +59,8 @@ dependencies {
 
     runtime 'net.sourceforge.jexcelapi:jxl:2.6.12'
 
-    compile 'com.itextpdf:itextpdf:5.0.6'
-    //compile 'net.sf.jasperreports:jasperreports:6.2.1'
+    //compile "org.grails.plugins:jasper:2.0.0.RC1"
+    compile 'net.sf.jasperreports:jasperreports:6.2.1'
     compile 'org.grails.plugins:paypal-payments:0.1.0'
     compile 'org.grails.plugins:mail:2.0.0.RC6'
 
