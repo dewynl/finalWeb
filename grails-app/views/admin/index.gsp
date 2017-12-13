@@ -52,7 +52,7 @@
         <h4 class="c-sidebar__title">Usuarios</h4>
         <ul class="c-sidebar__list">
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link is-active" href="/usuarios/create">
+                <a class="c-sidebar__link is-active" href="/usuario/create">
                     <i class="fa fa-home u-mr-xsmall"></i>Crear
                 </a>
             </li>
