@@ -1,6 +1,15 @@
 package finalweb
 
+import finalweb.reports.ResumenOrden
 import grails.validation.ValidationException
+import net.sf.jasperreports.engine.JRExporter
+import net.sf.jasperreports.engine.JRExporterParameter
+import net.sf.jasperreports.engine.JasperCompileManager
+import net.sf.jasperreports.engine.JasperFillManager
+import net.sf.jasperreports.engine.JasperPrint
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource
+import net.sf.jasperreports.engine.export.JRPdfExporter
+
 import static org.springframework.http.HttpStatus.*
 
 
@@ -119,9 +128,62 @@ class OrdenController {
         }
     }
 
-    def generarPDF(){
+    def generar_archivo_despacho(Orden orden) {
+        ByteArrayOutputStream pdfStream = null
+        try {
+            String reportName, jrxmlFileName, dotJasperFileName
+            jrxmlFileName = "Dispatch"
+            reportName = grailsApplication.mainContext.getResource("reports/${jrxmlFileName}.jrxml").file.getAbsoluteFile()
+            dotJasperFileName = grailsApplication.mainContext.getResource("reports/${jrxmlFileName}.jasper").file.getAbsoluteFile()
+            println reportName
 
+            Map<String, Object> reportParam = new HashMap<String, Object>()
+            def listItems = ResumenOrden.generarListaResumen(orden)
+            println orden
+            def dataSource = new JRBeanCollectionDataSource(listItems)
+
+            reportParam.put("nombreUsuario", orden.usuario.nombre + " " + orden.usuario.apellido)
+            reportParam.put("emailUsuario", orden.usuario.correo)
+            reportParam.put("numeroOrden", "ORD" + orden.id as String)
+            reportParam.put("totalFactura",'US$' + orden.total as String)
+            reportParam.put("direccion", orden.usuario.direccion)
+
+            JasperCompileManager.compileReportToFile(reportName)
+            JasperPrint print = JasperFillManager.fillReport(dotJasperFileName, reportParam, dataSource);
+
+            pdfStream = new ByteArrayOutputStream()
+            JRExporter exporter = new JRPdfExporter()
+            exporter.setParameter(JRExporterParameter.JASPER_PRINT, print)
+            exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, pdfStream) // your output goes here
+
+            exporter.exportReport()
+
+        } catch (Exception e) {
+            println e
+            println e.message
+        } finally {
+
+            // EMAIL SUPPLIERS:
+            def sendTo = []
+            sendTo.add("dewyn.liriano@gmail.com")
+            /* def supplyRole = Role.findByAuthority("ROLE_SUPPLY")
+             def users = UserRole.findAllByRole(supplyRole)*/
+            /* users.each {
+                 sendTo.add(it.user.email)
+             }*/
+
+            sendMail {
+                multipart true
+                subject "Dispatch Request"
+                text "You will be finding a dispatch request attached bellow."
+                to sendTo
+                from "ubeistore@gmail.com"
+                attach "dispatch.pdf", "application/pdf", pdfStream.toByteArray()
+            }
+        }
     }
+
+
     def recibo_compra() {
         println session.usuario
         if(params.correcto && session.usuario) {
@@ -145,25 +207,7 @@ class OrdenController {
             carrito.itemOrdenes =  new HashSet<>()
             carrito.save(flush: true)
 
-            String texto = ""
-            texto  = "Orden nueva!\n\n"
-            texto += "\tOrden No: ${o.id}\n"
-            texto += "\tUsuario: ${o.usuario.nombre} ${o.usuario.apellido}\n\n"
-            texto += "\tUsuario Direccion: ${o.usuario.direccion}\n"
-            texto += "\tOrden Articulos: \n\n"
-            o.itemOrden.each {
-                texto+= "\t \t id:${it.articulo.id} nombre: ${it.articulo.nombre} cantidad: ${it.cantidad}\n"
-            }
-            texto+= "\t Total: ${o.total}"
-            texto += "Un saludo."
-
-            sendMail {
-                multipart false
-                subject "Ubei Store Registration"
-                text texto
-                to "ubeiAlmacen@gmail.com"
-                from "ubeistore@gmail.com"
-            }
+            this.generar_archivo_despacho(o)
 
             // mandar a buscar reportes
             //render(view: 'show', model: ["orden": o])
