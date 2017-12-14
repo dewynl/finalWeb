@@ -69,12 +69,12 @@ class OrdenController {
     }
 
     def show(Long id) {
-        if(session.usuario) return ['orden': ordenService.get(id)]
+        if(Usuario.findByCorreo(session.usuario)) return ['orden': ordenService.get(id)]
         else redirect(url: '/usuario/login')
     }
 
     def create() {
-        if(session.usuario) respond new Orden(params)
+        if(Usuario.findByCorreo(session.usuario)) respond new Orden(params)
         else redirect(url: '/usuario/login')
     }
 
@@ -101,7 +101,7 @@ class OrdenController {
     }
 
     def edit(Long id) {
-        if(session.usuario) respond ordenService.get(id)
+        if(Usuario.findByCorreo(session.usuario)) respond ordenService.get(id)
         else redirect(url: '/usuario/login')
     }
 
@@ -211,10 +211,10 @@ class OrdenController {
 
 
     def recibo_compra() {
-        println "hola"+ session.usuario
-        if(params.correcto && session.usuario) {
+
+        if(params.correcto && Usuario.findByCorreo(session.usuario)) {
             // crear facturas
-            Usuario currentUser = session.usuario
+            Usuario currentUser = Usuario.findByCorreo(session.usuario)
             Carrito carrito = Carrito.findByUsuario(currentUser)
             Orden o = new Orden()
             o.usuario = currentUser

@@ -45,12 +45,12 @@ class UsuarioController {
     }
 
     def show(Long id) {
-        if(session.usuario) respond usuarioService.get(id)
+        if(Usuario.findByCorreo(session.usuario)) respond usuarioService.get(id)
         else redirect(url: '/usuario/login')
     }
 
     def create() {
-        if(session.usuario) return ['tipos': TipoUsuario.getListaTipos()]
+        if(Usuario.findByCorreo(session.usuario)) return ['tipos': TipoUsuario.getListaTipos()]
         else redirect(url: '/usuario/login')
     }
 
@@ -102,7 +102,7 @@ class UsuarioController {
     }
 
     def edit(Long id) {
-        if(session.usuario) respond usuarioService.get(id)
+        if(Usuario.findByCorreo(session.usuario)) respond usuarioService.get(id)
         else redirect(url: '/usuario/login')
     }
 

@@ -12,7 +12,7 @@ class ArticuloController {
     def index(Integer max) {
         Usuario us = Usuario.findByCorreo(session.usuario)
 
-        if(session.usuario){
+        if(us){
             params.max = Math.min(max ?: 10, 100)
             Integer total = 0
             for (ItemOrden a in Carrito.findByUsuario(us).itemOrdenes) {
@@ -30,12 +30,12 @@ class ArticuloController {
     }
 
     def show(Long id) {
-        if(session.usuario) return ['articulo': articuloService.get(id)]
+        if(Usuario.findByCorreo(session.usuario)) return ['articulo': articuloService.get(id)]
         else redirect(url: '/usuario/login')
     }
 
     def create() {
-        if(session.usuario) respond new Articulo(params)
+        if(Usuario.findByCorreo(session.usuario)) respond new Articulo(params)
         else redirect(url: '/usuario/login')
     }
 
@@ -65,7 +65,7 @@ class ArticuloController {
     }
 
     def edit(Long id) {
-        if(session.usuario)
+        if(Usuario.findByCorreo(session.usuario))
             respond articuloService.get(id)
         else redirect(url: '/usuario/login')
     }
