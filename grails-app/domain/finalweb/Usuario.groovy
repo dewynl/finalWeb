@@ -1,6 +1,6 @@
 package finalweb
 
-class Usuario {
+class Usuario implements Serializable {
 
     String correo
     String nombre
@@ -9,7 +9,6 @@ class Usuario {
     String telefono
     String direccion
     TipoUsuario tipo
-
 
     Date dateCreated
     Date lastUpdated
@@ -26,5 +25,22 @@ class Usuario {
 
     static mapping = {
         table 'usuario'
+    }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id=" + id +
+                ", correo='" + correo + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", clave='" + clave + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", tipo=" + tipo +
+                ", dateCreated=" + dateCreated +
+                ", lastUpdated=" + lastUpdated +
+                '}';
     }
 }

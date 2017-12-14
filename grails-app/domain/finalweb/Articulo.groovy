@@ -1,6 +1,6 @@
 package finalweb
 
-class Articulo {
+class Articulo implements Serializable {
 
     String nombre
     float precio

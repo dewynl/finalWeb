@@ -11,8 +11,6 @@ enum TipoUsuario {
 
     final String val
 
-
-
     TipoUsuario(String value) {
         this.val = value
     }

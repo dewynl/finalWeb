@@ -1,6 +1,6 @@
 package finalweb
 
-class Orden {
+class Orden implements Serializable {
 
     Usuario usuario
     Set<ItemOrden> itemOrden
@@ -31,9 +31,9 @@ class Orden {
             this.total+=it.articulo.precio * it.cantidad
         }
     }
+
     String generarRNC(){
         def result = "A0100100102" +  String.format("%08d", Orden.count());
         this.comprobante = result
-
     }
 }

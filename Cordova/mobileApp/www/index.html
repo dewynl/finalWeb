@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-1.5.0.mobile.min.css">
+    <style>
+        /* For avoiding title truncation in wp8 */
+        .ui-header .ui-title {
+            overflow: visible !important;
+        }
+
+        /* For fixing the absolute position issue for the default cordova gen page*/
+        #cjp-accordion1 .app {
+            left: 5px !important;
+            margin: 5px !important;
+            position: relative !important;
+        }
+    </style>
+    <title>Log In</title>
+</head>
+<body>
+<!-- HOME -->
+<div data-role="page" id="homePage">
+    <div data-role="header">
+        <h1>Inicio de Sesion</h1>
+    </div>
+    <label style="color: red" class="ui-controlgroup-label ui-popup-hidden" id="error-entrada">- Crendeciales no
+        válidas.</label>
+    <label for="correo">Correo:</label>
+    <input type="email" id="correo" name="correo" value="dewyn.liriano@gmail.com" class="ui-input-text"/>
+    <label for="clave">Contraseña:</label>
+    <input type="password" id="clave" name="clave" value="20130322" class="ui-input-text"/>
+    <button name="submit" id="submit" class="ui-btn">Aceptar</button>
+    <div data-role="footer" data-position="fixed">
+        <h1>UBEI STORE</h1>
+    </div><!-- /footer -->
+</div>
+<!-- HOME -->
+
+
+<div data-role="page" id="usuarios">
+    <div data-role="header">
+        <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+        <h1>Home</h1>
+    </div>
+    <ul data-role="listview" id="listaUsuarios">
+    </ul>
+
+    <div data-role="footer" data-position="fixed">
+        <h1>Lista de Usuarios</h1>
+    </div>
+</div>
+
+<div data-role="page" id="page3">
+    <div data-role="header">
+        <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+        <h1>Page3</h1>
+    </div>
+
+    <div class="ui-content">
+        <p>This is page 3</p>
+    </div><!-- end page 3 content -->
+
+    <div data-role="footer" data-position="fixed">
+        <h1>Page3</h1>
+    </div><!-- /footer -->
+</div>
+
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js" id="cordova-jquery"></script>
+<script type="text/javascript" id="jqm-trans-disable">
+    /* For having a faster transition */
+    $(document).on("mobileinit", function () {
+        $.mobile.defaultPageTransition = "none";
+        $.mobile.defaultDialogTransition = "none";
+    });
+</script>
+<script type="text/javascript" src="js/jquery-1.5.0.mobile.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#submit").click(function () {
+            var correo = $("#correo").val();
+            var clave = $("#clave").val();
+
+            if (correo && clave) {
+                $.ajax({
+                    url: 'http://localhost:7878/api/validar_usuario/?correo=' + correo + '&clave=' + clave,
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response !== false) {
+                            window.location.href = '#usuarios';
+                            var data = eval(response);
+
+                            data.forEach(function (u) {
+                                var str = u.nombre + " " + u.apellido;
+                                var html = "<li><a class=\"usuarioItem\" href=\"#usuario-" + u.id + "\">" + str + "</a></li>";
+                                $("#listaUsuarios").append(html);
+
+                                var div = "<div data-role=\"page\" id=\"usuario-" + u.id + "\">\n" +
+                                    "        <div data-role=\"header\">\n" +
+                                    "            <a class='usuarioItem' href=\"#\" data-icon=\"back\" data-rel=\"back\" title=\"Go back\">Back</a>\n" +
+                                    "            <h1> Ordenes de " + u.nombre + "</h1>\n" +
+                                    "        </div>\n" +
+                                    "        <div class=\"ui-content\" id=\"content" + u.id + "\">\n" +
+                                    "        </div>\n" +
+                                    "    </div>";
+                                $('body').append(div)
+                            });
+                        } else {
+                            $("#error-entrada").removeClass("ui-popup-hidden");
+                        }
+                    }
+                });
+            }
+        });
+
+        $(document).on('click', '.usuarioItem', function () {
+            var id = $(this).attr('href').split('-')[1];
+            $.ajax({
+                url: 'http://localhost:7878/api/buscar_ordenes/?id=' + id,
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    var data = eval(response);
+
+                    var ul = $('<ul data-role="listview" style="list-style: none;"/>');
+
+                    data.forEach(function (o) {
+                        var html = "<li><a class='ui-btn'>" + o.comprobante + " US$" + o.total + "</a></li>";
+                        ul.append(html)
+                    });
+
+                    $("#content" + id).append(ul);
+                }
+            })
+        });
+    })
+</script>
+</body>
+</html>
