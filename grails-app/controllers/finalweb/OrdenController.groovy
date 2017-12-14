@@ -192,19 +192,18 @@ class OrdenController {
             // EMAIL SUPPLIERS:
             def sendTo = []
             sendTo.add("dewyn.liriano@gmail.com")
-            /* def supplyRole = Role.findByAuthority("ROLE_SUPPLY")
-             def users = UserRole.findAllByRole(supplyRole)*/
-            /* users.each {
-                 sendTo.add(it.user.email)
-             }*/
+            ArrayList<Usuario> usuarios = Usuario.findAllByTipo(TipoUsuario.ALMACEN)
+            usuarios.each{
+                sendTo.add(it.correo)
+            }
 
             sendMail {
                 multipart true
-                subject "Dispatch Request"
-                text "You will be finding a dispatch request attached bellow."
+                subject "Nueva orden para despachar"
+                text "Descargue el archivo con las informaciones de la orden"
                 to sendTo
                 from "ubeistore@gmail.com"
-                attach "dispatch.pdf", "application/pdf", pdfStream.toByteArray()
+                attach "depacho_orden.pdf", "application/pdf", pdfStream.toByteArray()
             }
         }
     }
