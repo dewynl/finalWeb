@@ -95,25 +95,7 @@ class JasperController {
             println e
             println e.message
         } finally {
-
-            // EMAIL SUPPLIERS:
-            def sendTo = []
-            sendTo.add("dewyn.liriano@gmail.com")
-           /* def supplyRole = Role.findByAuthority("ROLE_SUPPLY")
-            def users = UserRole.findAllByRole(supplyRole)*/
-           /* users.each {
-                sendTo.add(it.user.email)
-            }*/
-
-            sendMail {
-                multipart true
-                subject "Dispatch Request"
-                text "You will be finding a dispatch request attached bellow."
-                to sendTo
-                from "ubeistore@gmail.com"
-                attach "dispatch.pdf", "application/pdf", pdfStream.toByteArray()
-            }
-            render file: pdfStream.toByteArray(), fileName: 'dispatch.pdf', contentType: 'application/pdf'
+            render file: pdfStream.toByteArray(), fileName: 'orden_despacho.pdf', contentType: 'application/pdf'
         }
     }
 
