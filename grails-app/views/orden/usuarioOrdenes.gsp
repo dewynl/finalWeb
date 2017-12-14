@@ -62,7 +62,8 @@
                                         <th class="pro-quantity">Cantidad articulos</th>
                                         <th class="pro-quantity">Comprobante</th>
                                         <th class="pro-subtotal">Total</th>
-                                        <th class="pro-remove"></th>
+                                        <th class="pro-remove">Despachado? </th>
+ <t                                     <th class="pro-remove"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -77,6 +78,7 @@
                                             <td class="pro-price"><span class="amount">${a.itemOrden.size()}</span></td>
                                             <td class="pro-quantity"><a href="#">${a.comprobante}</a></td>
                                             <td class="pro-quantity"><span class="amount">${a.total}</span></td>
+                                            <td class="pro-quantity"><span class="amount">${a.despachado}</span></td>
 
                                             <td class="pro-add-to-cart"><a href="/orden/recibir/${a.id}" class="add-to-cart">Recibido</a>
                                             </td>
