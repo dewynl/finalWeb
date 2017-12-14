@@ -237,8 +237,10 @@ class OrdenController {
             this.generar_archivo_despacho(o)
 
             // mandar a buscar reportes
+
             //render(view: 'show', model: ["orden": o])
             render(view: 'show', model: ['orden' : o])
+
         }
         else {
             redirect(url: "/")
