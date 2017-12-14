@@ -1,3 +1,4 @@
+<%@ page import="finalweb.TipoUsuario" %>
 <header class="header-section section sticker stick">
     <div class="container">
         <div class="row">
@@ -14,36 +15,14 @@
                     <div class="header-option-btns float-right">
                         <!-- header-search -->
                         <div class="header-search float-left">
-                            <button class="search-toggle" data-toggle="dropdown"><i class="fa fa-search"></i>
-                            </button>
-
-                            <div class="dropdown-menu header-search-form">
-                                <form action="#">
-                                    <input type="text" placeholder="Search">
-                                    <button><i class="fa fa-long-arrow-right"></i></button>
-                                </form>
-                            </div>
+                            <a href="/usuario/logout" ><i class="fa fa-user-times"></i>
+                            </a>
                         </div>
                         <!-- header Account -->
-                        <div class="header-account float-left">
-                            <ul>
-                                <li><a href="#"
-                                       data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="https://devitems.com/preview/outside/login.html">Log in</a>
-                                        </li>
-                                        <li><a href="https://devitems.com/preview/outside/register.html">Register</a>
-                                        </li>
-                                        <li><a href="https://devitems.com/preview/outside/register.html#">My Account</a>
-                                        </li>
-                                        <li><a href="https://devitems.com/preview/outside/wishlist.html">Wish list</a>
-                                        </li>
-                                        <li><a href="/carrito/index">Checkout</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                        <div class="header-cart float-left">
+                            <!-- Cart Toggle -->
+                        <a  href="/usuario/logout"><i clas="fa fa-user-times"></i></a>
+                         </div>
                         <!-- Header Cart -->
                         <div class="header-cart float-left">
                             <!-- Cart Toggle -->
@@ -94,7 +73,10 @@
                         <ul>
                             <li><a href="/">Home</a>
                             </li>
-                            <li><a href="/shop">Tienda</a>
+                            <li><a href="/admin/index">Admin</a>
+                            </li>
+
+                            <li><a href="/orden/usuarioOrdenes">Mis Ordenes</a>
                             </li>
                         </ul>
                     </nav>

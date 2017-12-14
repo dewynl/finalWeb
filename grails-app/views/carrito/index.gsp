@@ -83,20 +83,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-8 col-sm-7 col-xs-12">
-                        <div class="cart-buttons mb-30">
-                            <input type="submit" value="Update Cart">
-                            <a href="#">Continue Shopping</a>
-                        </div>
 
-                        <div class="cart-coupon mb-40">
-                            <h4>Coupon</h4>
-
-                            <p>Enter your coupon code if you have one.</p>
-                            <input type="text" placeholder="Coupon code">
-                            <input type="submit" value="Apply Coupon">
-                        </div>
-                    </div>
 
                     <div class="col-md-4 col-sm-5 col-xs-12">
                         <div class="cart-total mb-40">

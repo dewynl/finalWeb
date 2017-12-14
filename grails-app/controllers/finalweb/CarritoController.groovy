@@ -12,7 +12,7 @@ class CarritoController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        Usuario us = Usuario.findByNombre("Eva")
+        Usuario us = Usuario.findByCorreo(session.usuario)
         Integer total = 0
         for (ItemOrden a in Carrito.findByUsuario(us).itemOrdenes) {
             total += (a.cantidad * a.articulo.precio)
@@ -36,7 +36,7 @@ class CarritoController {
         Articulo a = Articulo.findById(Integer.parseInt(params.id_articulo))
         println params
 
-        Usuario us = session.usuario
+        Usuario us = Usuario.findByCorreo(session.usuario)
 
         //Usuario usuario=(Usuario) applicationContext.springSecurityService.getCurrentUser()
 

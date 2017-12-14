@@ -91,7 +91,8 @@ class PaypalController {
             def map = new JsonSlurper().parseText(paypalPayment.toString())
             println map
 
-            forward(controller: 'orden', action: 'recibo_compra', params: ['correcto':true])
+           forward(controller: 'orden', action: 'recibo_compra', params: ['correcto':true])
+
         }
         else {
             redirect url: "http://localhost:7878/"

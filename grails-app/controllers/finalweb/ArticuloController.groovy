@@ -10,27 +10,33 @@ class ArticuloController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        session.usuario = Usuario.findByNombre("Eva", [max: 1])
-        params.max = Math.min(max ?: 10, 100)
-        Integer total = 0
-        for (ItemOrden a in Carrito.findByUsuario(session.usuario).itemOrdenes) {
-            total += (a.cantidad * a.articulo.precio)
-        }
-        List<Articulo> lista = new ArrayList<>()
+        Usuario us = Usuario.findByCorreo(session.usuario)
 
-        articuloService.list(params).each {
-            if(it.cantidad>0) lista.add(it)
-        }
+        if(session.usuario){
+            params.max = Math.min(max ?: 10, 100)
+            Integer total = 0
+            for (ItemOrden a in Carrito.findByUsuario(us).itemOrdenes) {
+                total += (a.cantidad * a.articulo.precio)
+            }
+            List<Articulo> lista = new ArrayList<>()
 
-        return [articuloCount: articuloService.count(), 'articulos': articuloService.list(params), 'carrito': Carrito.findByUsuario(session.usuario).itemOrdenes, "total": total]
+            articuloService.list(params).each {
+                if(it.cantidad>0) lista.add(it)
+            }
+
+            return [articuloCount: articuloService.count(), 'articulos': articuloService.list(params), 'carrito': Carrito.findByUsuario(us).itemOrdenes, "total": total]
+
+        }else redirect(url: '/usuario/login')
     }
 
     def show(Long id) {
-        return ['articulo': articuloService.get(id)]
+        if(session.usuario) return ['articulo': articuloService.get(id)]
+        else redirect(url: '/usuario/login')
     }
 
     def create() {
-        respond new Articulo(params)
+        if(session.usuario) respond new Articulo(params)
+        else redirect(url: '/usuario/login')
     }
 
     def save(Articulo articulo) {
@@ -59,7 +65,9 @@ class ArticuloController {
     }
 
     def edit(Long id) {
-        respond articuloService.get(id)
+        if(session.usuario)
+            respond articuloService.get(id)
+        else redirect(url: '/usuario/login')
     }
 
     def update(Articulo articulo) {

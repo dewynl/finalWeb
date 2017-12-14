@@ -24,7 +24,7 @@ class OrdenController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        Usuario us = Usuario.findByNombre("Eva")
+        Usuario us = Usuario.findByCorreo(session.usuario)
         Integer total= 0
         for(ItemOrden a in Carrito.findByUsuario(us).itemOrdenes){
             total += (a.cantidad * a.articulo.precio)
@@ -45,13 +45,37 @@ class OrdenController {
         redirect action:"index", method:"GET"
 
     }
+    def usuarioOrdenes(Integer max){
+        params.max = Math.min(max ?: 10, 100)
+        Usuario us = Usuario.findByCorreo(session.usuario)
+        Integer total= 0
+        for(ItemOrden a in Carrito.findByUsuario(us).itemOrdenes){
+            total += (a.cantidad * a.articulo.precio)
+        }
+        def list = new ArrayList<>()
+        Orden.findAllByUsuario(us).each {
+            if(!it.recibido) list.add(it)
+        }
+
+        return [ ordenCount: ordenService.count(), 'ordenes': list , 'carrito': Carrito.findByUsuario(us).itemOrdenes.take(5), "total": total]
+    }
+    def recibir (Long id){
+
+        Orden o = Orden.findById(id)
+        o.recibido = true
+        o.save(flush: true)
+        redirect url:"/orden/usuarioOrdenes"
+
+    }
 
     def show(Long id) {
-        return ['orden': ordenService.get(id)]
+        if(session.usuario) return ['orden': ordenService.get(id)]
+        else redirect(url: '/usuario/login')
     }
 
     def create() {
-        respond new Orden(params)
+        if(session.usuario) respond new Orden(params)
+        else redirect(url: '/usuario/login')
     }
 
     def save(Orden orden) {
@@ -77,7 +101,8 @@ class OrdenController {
     }
 
     def edit(Long id) {
-        respond ordenService.get(id)
+        if(session.usuario) respond ordenService.get(id)
+        else redirect(url: '/usuario/login')
     }
 
     def update(Orden orden) {
@@ -186,7 +211,7 @@ class OrdenController {
 
 
     def recibo_compra() {
-        println session.usuario
+        println "hola"+ session.usuario
         if(params.correcto && session.usuario) {
             // crear facturas
             Usuario currentUser = session.usuario
@@ -213,7 +238,7 @@ class OrdenController {
 
             // mandar a buscar reportes
             //render(view: 'show', model: ["orden": o])
-            forward(controller: 'orden', action: 'show/'+o.id, params: ['id': o.id])
+            render(view: 'show', model: ['orden' : o])
         }
         else {
             redirect(url: "/")

@@ -8,7 +8,7 @@ import org.grails.web.json.JSONArray
 class AdminController {
 
     def index() {
-
+        if(!session.usuario) redirect(url: '/usuario/login')
     }
     def compras(){
         def comprasList = Orden.findAll()
@@ -80,8 +80,6 @@ class AdminController {
 
         Gson gson = new Gson()
         render(gson.toJson(datos))
-
-
     }
 
     def despachos(){

@@ -11,7 +11,7 @@ class DepartamentoController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        Usuario us = Usuario.findByNombre("Eva")
+        Usuario us = Usuario.findByCorreo(session.usuario)
         Integer total= 0
         for(ItemOrden a in Carrito.findByUsuario(us).itemOrdenes){
             total += (a.cantidad * a.articulo.precio)

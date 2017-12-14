@@ -11,9 +11,32 @@ class UsuarioController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def login(){
+        Usuario u = Usuario.findByCorreo(params.username)
+
+        if(u){
+            if(u.clave.equals(params.password)){
+                //render "siii"
+                session.usuario = u.correo
+                println(session.usuario)
+                redirect(url: '/articulo/index')
+            }
+
+        }else {
+            render(view: 'login', model: 'usuario')
+        }
+
+    }
+    def logout (){
+        session.usuario = null
+        render(view: 'login', model: 'usuario')
+    }
+
+
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        Usuario us = Usuario.findByNombre("Eva")
+        Usuario us = Usuario.findByCorreo(session.usuario)
         Integer total= 0
         for(ItemOrden a in Carrito.findByUsuario(us).itemOrdenes){
             total += (a.cantidad * a.articulo.precio)
@@ -22,11 +45,13 @@ class UsuarioController {
     }
 
     def show(Long id) {
-        respond usuarioService.get(id)
+        if(session.usuario) respond usuarioService.get(id)
+        else redirect(url: '/usuario/login')
     }
 
     def create() {
-        return ['tipos': TipoUsuario.getListaTipos()]
+        if(session.usuario) return ['tipos': TipoUsuario.getListaTipos()]
+        else redirect(url: '/usuario/login')
     }
 
     def save(Usuario usuario) {
@@ -77,7 +102,8 @@ class UsuarioController {
     }
 
     def edit(Long id) {
-        respond usuarioService.get(id)
+        if(session.usuario) respond usuarioService.get(id)
+        else redirect(url: '/usuario/login')
     }
 
     def update(Usuario usuario) {

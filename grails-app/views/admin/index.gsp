@@ -63,16 +63,14 @@
             </li>
         </ul>
 
-        <h4 class="c-sidebar__title">Departamentos</h4>
+
+
+        <h4 class="c-sidebar__title">Ordenes</h4>
         <ul class="c-sidebar__list">
-            <li class="c-sidebar__item">
-                <a class="c-sidebar__link is-active" href="/departamento/create">
-                    <i class="fa fa-home u-mr-xsmall"></i>Crear
-                </a>
-            </li>
+
 
             <li class="c-sidebar__item">
-                <a class="c-sidebar__link is-active" href="/departamento/index">
+                <a class="c-sidebar__link is-active" href="/orden/index">
                     <i class="fa fa-home u-mr-xsmall"></i>ver
                 </a>
             </li>
