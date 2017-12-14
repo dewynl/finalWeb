@@ -14,8 +14,8 @@ class PaypalController {
         println "Carrito Index"
         Usuario currentUser = null
         Carrito carritoUsuario = null;
-        if (session.usuario){
-            currentUser = session.usuario
+        if (Usuario.findByCorreo(session.usuario)){
+            currentUser = Usuario.findByCorreo(session.usuario)
             carritoUsuario = Carrito.findByUsuario(currentUser)
         }
 
