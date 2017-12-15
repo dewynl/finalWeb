@@ -29,7 +29,10 @@
 <div class="o-page__sidebar js-page-sidebar">
     <div class="c-sidebar">
         <a class="c-sidebar__brand u-ml-medium" href="#">
-            <img class="c-sidebar__brand-img" src="Home%20Overview%20|%20Dashboard%20UI%20Kit_files/logo.png" alt="Logo"> Dashboard
+                <a href="/">
+                    <g:img dir="images" file="img/bg/logo.png"/>
+                </a>
+
         </a>
 
         <h4 class="c-sidebar__title">Articulos</h4>
@@ -126,7 +129,7 @@
                     </div>
 
                     <div class="c-graph-card__chart"><div style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                        <canvas id="PendientesChart" width="50" height="50"></canvas>
+                        <canvas id="pendientesChart" width="50" height="50"></canvas>
                     </div>
                 </div>
             </div>
