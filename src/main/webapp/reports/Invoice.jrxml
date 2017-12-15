@@ -178,7 +178,7 @@
 	<columnHeader>
 		<band height="20">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="80" height="20" forecolor="#FFFFFF" backcolor="#3DCBFF" uuid="5847d858-3764-44e3-8b52-1a838895fcf2"/>
+				<reportElement mode="Opaque" x="0" y="0" width="80" height="20" forecolor="#FFFFFF" backcolor="#808080" uuid="5847d858-3764-44e3-8b52-1a838895fcf2"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
@@ -189,7 +189,7 @@
 				<text><![CDATA[ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="80" y="0" width="200" height="20" forecolor="#FFFFFF" backcolor="#3DCBFF" uuid="688037d5-b716-4e44-b9e6-d0ce37dfc554"/>
+				<reportElement mode="Opaque" x="80" y="0" width="200" height="20" forecolor="#FFFFFF" backcolor="#808080" uuid="688037d5-b716-4e44-b9e6-d0ce37dfc554"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
@@ -200,7 +200,7 @@
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="280" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#3DCBFF" uuid="367e8fe6-5edd-4a48-be45-5ebb43f5ddcc"/>
+				<reportElement mode="Opaque" x="280" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#808080" uuid="367e8fe6-5edd-4a48-be45-5ebb43f5ddcc"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
@@ -211,7 +211,7 @@
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="380" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#3DCBFF" uuid="d8cf345a-ece8-49ea-9eff-a466e15d8c34"/>
+				<reportElement mode="Opaque" x="380" y="0" width="100" height="20" forecolor="#FFFFFF" backcolor="#808080" uuid="d8cf345a-ece8-49ea-9eff-a466e15d8c34"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
@@ -219,10 +219,10 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[]]></text>
+				<text><![CDATA[Precio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="480" y="0" width="76" height="20" forecolor="#FFFFFF" backcolor="#3DCBFF" uuid="700ce6d9-9849-479b-b476-ac69bda14239"/>
+				<reportElement mode="Opaque" x="480" y="0" width="76" height="20" forecolor="#FFFFFF" backcolor="#808080" uuid="700ce6d9-9849-479b-b476-ac69bda14239"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
@@ -273,7 +273,7 @@
 				<text><![CDATA[Gracias por Preferirnos!]]></text>
 			</staticText>
 			<textField>
-				<reportElement key="" positionType="Float" x="480" y="125" width="76" height="20" uuid="357a6261-6d23-4ab2-8e37-8b5e5e50c098"/>
+				<reportElement key="" positionType="Float" x="480" y="125" width="76" height="20" backcolor="#E6E8E9" uuid="357a6261-6d23-4ab2-8e37-8b5e5e50c098"/>
 				<box>
 					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
