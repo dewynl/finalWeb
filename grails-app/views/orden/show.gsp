@@ -90,7 +90,6 @@
                             <!-- Quantity Cart -->
                             <div class="quantity-cart section">
                                 <a href="/jasper/generar_archivo_factura/${orden.id}" class="add-to-cart">Resumen Orden</a>
-                                <button href="/oden/despachar/${orden.id}" class="add-to-cart">Despachar</button>
                             </div>
 
                             <div class="share-icons section">
