@@ -76,6 +76,9 @@
                             <li><a href="/admin/index">Admin</a>
                             </li>
 
+                            <li><a href="/orden/index">Almacen</a>
+                            </li>
+
                             <li><a href="/orden/usuarioOrdenes">Mis Ordenes</a>
                             </li>
                         </ul>

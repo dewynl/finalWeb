@@ -23,6 +23,10 @@ class OrdenController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+        if(!session.usuario) {
+            redirect(url: '/usuario/login')
+        } else if(!Usuario.findByCorreo(session.usuario).tipo in [TipoUsuario.ALMACEN, TipoUsuario.ADMIN]) redirect(url: '/')
+
         params.max = Math.min(max ?: 10, 100)
         Usuario us = Usuario.findByCorreo(session.usuario)
         Integer total= 0
@@ -248,7 +252,7 @@ class OrdenController {
     def generar_excel() {
 
         List<Orden> Ordenes = Orden.findAll();
-        def algo = []
+        def rows = []
 
         Ordenes.each {
             def id = it.id
@@ -264,7 +268,7 @@ class OrdenController {
                 valx['mercanciaId'] = io.id
                 valx['mercanciaNombre'] = io.articulo.nombre
                 valx['mercanciaPrecio'] = io.articulo.precio
-                algo.add(valx)
+                rows.add(valx)
 
             }
         }
@@ -273,7 +277,7 @@ class OrdenController {
         new WebXlsxExporter().with {
             setResponseHeaders(response)
             fillHeader(headers)
-            add(algo, withProperties)
+            add(rows, withProperties)
             save(response.outputStream)
         }
 
