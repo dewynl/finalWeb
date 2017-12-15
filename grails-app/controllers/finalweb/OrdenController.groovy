@@ -25,7 +25,7 @@ class OrdenController {
     def index(Integer max) {
         if(!session.usuario) {
             redirect(url: '/usuario/login')
-        } else if(!Usuario.findByCorreo(session.usuario).tipo in [TipoUsuario.ALMACEN, TipoUsuario.ADMIN]) redirect(url: '/')
+        } else if(!Usuario.findByCorreo(session.usuario).tipo.equals(TipoUsuario.ALMACEN) && !Usuario.findByCorreo(session.usuario).tipo.equals(TipoUsuario.ADMIN)) redirect(url: '/')
 
         params.max = Math.min(max ?: 10, 100)
         Usuario us = Usuario.findByCorreo(session.usuario)

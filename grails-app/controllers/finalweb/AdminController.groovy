@@ -11,7 +11,7 @@ class AdminController {
     def index() {
         if(!session.usuario) {
             redirect(url: '/usuario/login')
-        } else if(!Usuario.findByCorreo(session.usuario).tipo.equals(TipoUsuario.ADMIN)) redirect(url: '/articulos/index')
+        } else if(!Usuario.findByCorreo(session.usuario).tipo.equals(TipoUsuario.ADMIN) ) redirect(url: '/')
     }
     def compras(){
 
