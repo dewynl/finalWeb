@@ -35,6 +35,10 @@ class UsuarioController {
 
 
     def index(Integer max) {
+        if(!session.usuario) {
+            redirect(url: '/usuario/login')
+        } else if(!Usuario.findByCorreo(session.usuario).tipo.equals(TipoUsuario.ADMIN) ) redirect(url: '/')
+
         params.max = Math.min(max ?: 10, 100)
         Usuario us = Usuario.findByCorreo(session.usuario)
         Integer total= 0
@@ -50,8 +54,11 @@ class UsuarioController {
     }
 
     def create() {
-        if(Usuario.findByCorreo(session.usuario)) return ['tipos': TipoUsuario.getListaTipos()]
-        else redirect(url: '/usuario/login')
+        if(!session.usuario) {
+            redirect(url: '/usuario/login')
+        } else if(!Usuario.findByCorreo(session.usuario).tipo.equals(TipoUsuario.ADMIN) ) redirect(url: '/')
+
+        return ['tipos': TipoUsuario.getListaTipos()]
     }
 
     def save(Usuario usuario) {

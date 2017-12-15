@@ -35,8 +35,13 @@ class ArticuloController {
     }
 
     def create() {
-        if(Usuario.findByCorreo(session.usuario)) respond new Articulo(params)
-        else redirect(url: '/usuario/login')
+        if(!session.usuario) {
+            redirect(url: '/usuario/login')
+        } else if(!Usuario.findByCorreo(session.usuario).tipo.equals(TipoUsuario.ADMIN) ) redirect(url: '/')
+
+        respond new Articulo(params)
+
+
     }
 
     def save(Articulo articulo) {
