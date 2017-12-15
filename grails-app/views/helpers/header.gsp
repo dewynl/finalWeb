@@ -29,7 +29,7 @@
                             <a class="cart-toggle" href="#"
                                data-toggle="dropdown">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span id="cant_articulos">2</span>
+                               %{-- <span id="cant_articulos">2</span>--}%
                             </a>
                             <!-- Mini Cart Brief -->
                             <div class="mini-cart-brief dropdown-menu text-left">

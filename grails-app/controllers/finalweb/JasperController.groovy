@@ -65,7 +65,8 @@ class JasperController {
         ByteArrayOutputStream pdfStream = null
         try {
             String reportName, jrxmlFileName, dotJasperFileName
-            jrxmlFileName = "Dispatch"
+            //jrxmlFileName = "Dispatch"
+            jrxmlFileName = "Invoice"
             reportName = grailsApplication.mainContext.getResource("reports/${jrxmlFileName}.jrxml").file.getAbsoluteFile()
             dotJasperFileName = grailsApplication.mainContext.getResource("reports/${jrxmlFileName}.jasper").file.getAbsoluteFile()
             println reportName
@@ -78,7 +79,7 @@ class JasperController {
             reportParam.put("nombreUsuario", orden.usuario.nombre + " " + orden.usuario.apellido)
             reportParam.put("emailUsuario", orden.usuario.correo)
             reportParam.put("numeroOrden", "ORD" + orden.id as String)
-            reportParam.put("totalFactura",'US$' + orden.total as String)
+            reportParam.put("totalOrden",'US$' + orden.total as String)
             reportParam.put("direccion", orden.usuario.direccion)
 
             JasperCompileManager.compileReportToFile(reportName)

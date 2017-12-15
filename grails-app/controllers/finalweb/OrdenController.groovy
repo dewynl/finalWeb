@@ -162,7 +162,7 @@ class OrdenController {
         ByteArrayOutputStream pdfStream = null
         try {
             String reportName, jrxmlFileName, dotJasperFileName
-            jrxmlFileName = "Dispatch"
+            jrxmlFileName = "Invoice"
             reportName = grailsApplication.mainContext.getResource("reports/${jrxmlFileName}.jrxml").file.getAbsoluteFile()
             dotJasperFileName = grailsApplication.mainContext.getResource("reports/${jrxmlFileName}.jasper").file.getAbsoluteFile()
             println reportName

@@ -16,7 +16,6 @@ class UsuarioController {
 
         if(u){
             if(u.clave.equals(params.password)){
-                //render "siii"
                 session.usuario = u.correo
                 println(session.usuario)
                 redirect(url: '/articulo/index')
